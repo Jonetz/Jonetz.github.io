@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Here i am able to share anything i ant"
+title: "Here i am able to share anything i want!"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
