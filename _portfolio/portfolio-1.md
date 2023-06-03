@@ -4,6 +4,10 @@ excerpt: "An bachelors seminar on adversarial classification at the InfoSec Depa
 collection: portfolio
 ---
 
-For this seminar i decided to look at the security aspects of adversarial classification. This includes a presentation, as well as short academic essay. Be aware that both are only descriptive of other peoples work and i did not include any of my own ideas or theses in there. 
+In this portfolio entry, I share my seminar experience where I focused on exploring the security aspects of adversarial classification. The seminar included a 30-minute presentation and an accompanying academic essay. Please note that both the presentation and the essay purely describe the work of others without incorporating any personal ideas or theses.
 
-You can find the slides that correspond to the 30 minute presentation [here](http://jonetz.github.io/files/Seminar_Folien.pdf) and the academic essay [here](http://jonetz.github.io/files/Seminar_Infsec_Ausarbeitung.pdf), both of them are written in german.
+You can access the slides for the 30-minute presentation [here](http://jonetz.github.io/files/Seminar_Folien.pdf). These slides provide an overview of the seminar, discussing key concepts and findings related to adversarial classification.
+
+For the academic essay, written in German, you can find it [here](http://jonetz.github.io/files/Seminar_Infsec_Ausarbeitung.pdf). The essay offers a detailed analysis of adversarial classification within the realm of information security.
+
+By exploring these resources, you can gain insights into my seminar presentation and academic exploration of the security aspects of adversarial classification.

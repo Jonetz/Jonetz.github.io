@@ -4,7 +4,8 @@ excerpt: "A research project me and another student did for our bachelors study 
 collection: portfolio
 ---
 
-Here we implemented a part of the Ordinos Voting System proposed by Küsters et al. ([link](https://publ.sec.uni-stuttgart.de/kuestersliedtkemuellerrauschvogt-eurosp-2020.pdf)).
-We mainly implemented the ideas already proposed in another [bachelor-thesis](http://dx.doi.org/10.18419/opus-10699), and optimized the procedures.
+In this project, we have implemented a portion of the Ordinos Voting System, as proposed by Küsters et al. The details of their work can be found in their publication [here](https://publ.sec.uni-stuttgart.de/kuestersliedtkemuellerrauschvogt-eurosp-2020.pdf). Our implementation primarily builds upon the ideas previously presented in another bachelor thesis, which can be accessed [here](http://dx.doi.org/10.18419/opus-10699). We have optimized the procedures to enhance the efficiency and functionality of the system.
 
-We also mae an academic essay to describe what we did in form of looking at the Zero Knowledge Proof, the Voting Systems and how to implement this in a Offline phase ([here](http://jonetz.github.io/files/Forschungsprojekt.pdf))
+In addition to the implementation, we have prepared an academic essay that describes our approach. The essay covers various aspects, including Zero Knowledge Proof, Voting Systems, and the implementation of the Ordinos Voting System during an Offline phase. You can access the essay [here](http://jonetz.github.io/files/Forschungsprojekt.pdf).
+
+Through our project, we aim to contribute to the advancement of the Ordinos Voting System by implementing and optimizing its functionalities. The academic essay provides a detailed account of our work, offering insights into the underlying concepts and methodologies employed in our implementation.
