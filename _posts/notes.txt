@@ -1,0 +1,152 @@
+---
+title: 'MOFormer - A Review'
+date: 2023-06-07
+permalink: /posts/2023/06/MOFormers/
+tags:
+  - ML4Sci
+  - Seminar
+  - Uni
+  - DeepLearning
+  - Transformer
+---
+
+# How can we find Metal-Organic-Frameworks with the desired properties we want using Transformers?
+
+Just include a short intro to Material sciences and why there still is a problem
+
+## The problem
+Property Prediction and ...
+
+### Why we need new MOFs right now
+Microporous Materials are relevant ...
+Main purpose:
+They store or separate gases in their pores.
+For this, they have a very high surface area.
+MOFs are Frameworks specifically tailored to their application
+(e.g. filtering a specific pollutant or delivering a special drug).
+Basic idea to synthesize new MOFs: Combine Metal and Organics to crystalline networks.
+
+## What actually are MOFs?
+Typical building blocks and sbus, how are they obtained
+
+Metall-organic Frameworks
+Combination of Metal-Nodes and organic Lignan-Linkers
+These structures have holes that are interesting, since by choice of nodes and lignans, we can choose what passes and what stays trapped.
+Left: dia-Node (rcsr.net), Right: MOF5 (Tony Boehle)
+
+Reminder - Topology, Geometry, and Nets
+Topology is how we describe that links (edges) connect nodes (vertices)
+Geometry is how we describe that links and nodes are positioned in a space to each other
+Networks are when we have topological graphs that provide some kind of periodicity
+We are concerned with crystals that are some kind of Networks, here we are looking at one periodic element.
+
+Structure of MOFs (1)
+Basic Structure: Links and Nodes
+Extensions: Combination of different lignants, introduction of impurities, change of some nodes, hierarchical combinations
+Discovery of new stable MOF structures is important
+Considering synthesis two groups:
+1. Reticular MOFs
+2. Isoreticular MOFs
+
+Structure of MOFs (2)
+Problem with MOFs is characterization and classification of nets:
+Systre/Topos Pro
+Mostly Unique representation using some chemical descriptors.
+Developed by mathematicians, using complex topology computations.
+Some descriptors to use:
+- Vertex symbol from one vertex around, characterize cycles
+- Coordination number expresses the cycle-depending angles of nodes from small to the highest number
+
+Synthesis of MOFs
+We do not want any stable MOF, but a MOF that has some special properties, that is a complication!
+We can use...
+1. Chemist Expert Knowledge
+2. Mass testing
+3. High-throughput computational screening (Atom Simulations, Density Functionality Theorem)
+4. Postsynthetic Modification
+
+Chemist Knowledge & Mass testing
+1. Chemists use expert knowledge to estimate what effects a modification has in interchanging different Building blocks.
+2. Try many (thousands) of different chemical combinations and production methods to find a suiting pair (also referred to as High-throughput analysis)
+
+Density Functionality Theory
+Quantum-chemical Model to simulate electron behavior:
+1. Guess initial electron state via an approximation of Schrödinger's equation.
+2. Iterative optimization of charge densities.
+3. Solve Kohn–Sham equations to get a consistent state (not considering electron correlations, simplifying Schrödinger's equations).
+
+Postsynthetic modifications of MOFs
+There are several ways to modify an already given MOF to change properties:
+Lignant exchange, Node exchange, Inject Impurities, Introduce defects
+
+How are MOFs represented in chemistry and what data is there?
+Exact Systems: Systre, Topos Pro
+3D Coordinate Systems, Topology Graphs, SMILES, MOF Key, MOF Id
+
+## What can we do with machine learning
+Short summary of requirements for a machine learning solution
+
+Requirements for a Machine Learning solution:
+1. Accurate representation of the problem space
+2. Learning algorithm that can generalize from available data
+3. Sufficient amount of training data
+4. Scalable training process
+5. Interpretable models for knowledge extraction
+
+### State-of-the-Arts right now
+Conventional Algorithms and CGCNNs (what problems are there and how can we approach them in a logical convention)
+
+Conventional Algorithms:
+1. Force fields: Describe atomic interactions using a potential energy function.
+2. Monte Carlo: Simulate the behavior of atomic systems based on random sampling.
+3. Molecular Dynamics: Simulate the time evolution of atoms and molecules.
+4. Density Functional Theory (DFT): Quantum mechanical method for electronic structure calculations.
+
+CGCNN (Crystal Graph Convolutional Neural Network):
+1. Combines graph theory and deep learning for material property prediction.
+2. Captures the structural information of crystals through graph convolutions.
+3. Overcomes some limitations of conventional methods.
+4. However, still faces challenges in scalability and interpretability.
+
+### Transformers are expected to bring something to the Table ...
+How do we expect them to overcome some of the issues posed
+
+Transformers in Material Science:
+1. Transformers have shown great success in natural language processing tasks.
+2. Can capture long-range dependencies and effectively model sequential data.
+3. Expected to bring advancements in material property prediction and discovery.
+4. Potential to overcome the limitations of conventional algorithms and CGCNNs.
+
+### Training of our Transformers
+Self-Supervised Training Methods
+
+Self-Supervised Training:
+1. Overcome the need for large labeled datasets.
+2. Pretrain models on auxiliary tasks to learn useful representations.
+3. Use the pretrained models as initialization for downstream tasks.
+4. Examples of self-supervised tasks: Contrastive learning, Autoencoding.
+
+## Evaluation
+What the researchers took from it?
+- t-SNE: Visualization technique to analyze and compare high-dimensional data.
+- Head weights: Examining the importance of different heads in the transformer architecture.
+- Speedup: Transformers offer faster inference times compared to CGCNNs.
+
+### My Commentary
+
+## References
+[1] Zhonglin Cao, Rishikesh Magar, Yuyang Wang, and Amir Barati Farimani. "MOFormer: Self-Supervised Transformer Model for Metal–Organic Framework Property Prediction." Journal of the American Chemical Society, 145(5):2958-2967, 2023. DOI: [10.1021/jacs.2c11420](https://doi.org/10.1021/jacs.2c11420)
+
+[2] Benjamin J. Bucior, Andrew S. Rosen, Maciej Haranczyk, Zhenpeng Yao, Michael E. Ziebel, Omar K. Farha, Joseph T. Hupp, J. Ilja Siepmann, Alán Aspuru-Guzik, and Randall Q. Snurr. "Identification Schemes for Metal–Organic Frameworks To Enable Rapid Search and Cheminformatics Analysis." Crystal Growth & Design, 19(11):6682-6697, 2019. DOI: [10.1021/acs.cgd.9b01050](https://doi.org/10.1021/acs.cgd.9b01050)
+
+[3] Yongchul G. Chung, Emmanuel Haldoupis, Benjamin J. Bucior, Maciej Haranczyk, Seulchan Lee, Hongda Zhang, Konstantinos D. Vogiatzis, Marija Milisavljevic, Sanliang Ling, Jeffrey S. Camp, Ben Slater, J. Ilja Siepmann, David S. Sholl, and Randall Q. Snurr. "Advances, Updates, and Analytics for the Computation-Ready, Experimental Metal–Organic Framework Database: CoRE MOF 2019." Journal of Chemical & Engineering Data, 64(12):5985-5998, 2019. DOI: [10.1021/acs.jced.9b00835](https://doi.org/10.1021/acs.jced.9b00835)
+
+[4] Christopher E. Wilmer, Michael Leaf, Chang Yeon Lee, Omar K. Farha, Brad G. Hauser, Joseph T. Hupp, and Randall Q. Snurr. "Large-scale screening of hypothetical metal--organic frameworks." Nature chemistry, 4(2):83-89, 2012.
+
+[5] Tian Xie and Jeffrey C. Grossman. "Crystal Graph Convolutional Neural Networks for an Accurate and Interpretable Prediction of Material Properties." Physical Review Letters, 120(14), 2018. DOI: [10.1103/physrevlett.120.145301](https://doi.org/10.1103/physrevlett.120.145301)
+
+[6] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. "Attention Is All You Need." CoRR, abs/1706.03762, 2017. DOI: [arXiv:1706.03762](http://arxiv.org/abs/1706.03762)
+
+[7] VV Butova, MA Soldatov, AA Guda, KA Lomachenko, and C Lamberti. "Metal-organic frameworks: Structure, properties, methods of synthesis and characterization." Russian Chemical Reviews, 85(3):280-307, 2016.
+
+[8] Andrew S. Rosen, Shaelyn M. Iyer, Debmalya Ray, Zhenpeng Yao, Alan Aspuru-Guzik, Laura Gagliardi, Justin M. Notestein, and Randall Q. Snurr. "Machine learning the quantum-chemical properties of metal--organic frameworks for accelerated materials discovery." Matter, 4(5):1578-1597, 2021.
