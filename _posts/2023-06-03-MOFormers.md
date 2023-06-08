@@ -56,7 +56,7 @@ A naive approach is given by conventional machine learning algorithms such as su
 
 The most accurate algorithm is given by *crystal graph convolutional neural networks* (CGCNN), they take as input a graph that represents the topology of one cycle of the MOF as shown in *Figure-2*. Then they combine the local effects these links and nodes have with convolutional layers and by increasing these effect windows in a given cascade of convolutional layers we extract the properties we trained for.  This configuration may have problems with the generalization of new building units (as they have to be covered extensively in the training data) and vertical scalability (as the required computation power increases enourmously if we want to train on larger MOF-configurations). This is a reason for Zhonglin et al. to propose a new architecture that aims to solve some of these issues.
 
-![](/images/MOFs/cgcnn.pdf)
+![](/images/MOFs/cgcnn.png)
 **Figure-1** Input preparation of a CGCNN 
 
 ### Transformers are expected to bring something to the Table ...
