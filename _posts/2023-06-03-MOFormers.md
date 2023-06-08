@@ -1,6 +1,6 @@
 ---
 title: 'MOFormer - A Review'
-date: 2012-08-14
+date: 2023-07-31
 permalink: /posts/2023/06/MOFormers/
 tags:
   - ML4Sci
@@ -28,16 +28,22 @@ Metal-Organic-Frameworks have two special components, as the name suggests one o
 
 From this description we know the parts that can be used to assemble a basic MOF, but this is still not enough as the same materials often can have different variants, introduced by differences in geometry as well as topology. Depending on their method of synthesis and possible environments the geometry (i.e. how the links and nodes are placed in the space relative to each other) may change, so a MOF can change the geometry for instance if it stores a certain material. If only the geometry differs we generally consider it to be the same MOFs, as long as the topology is homomorphic. Other than that if the topologies differ but the same materials are included we consider this to be another MOF.  The detection and removal of duplicates is a still non trivial task in practice, but we do not consider this a problem we have to deal with from a machine learning perspective.  
 ### How is discovery done right now? 
-The structured syntesis of new MOFs with specific properties is also referred to as discovery. Here the chemists have developed a suite of different methods to facilitate this process:
--Chemist Knowledge
--Mass testing
-- High thorughput compuational screening
-- postsynthetic modification
+The structured synthesis of new MOFs with specific properties is also referred to as discovery. Here the chemists have developed a suite of different methods to facilitate this process:
+- *Chemist Knowledge* This process just includes an expert that has gathered some experience in this field using intuition and knowledge what the effects of SBUs are or could be to test them in a structured manner. This is not State of the Art right now, but can achieve good results in some 
+- *Mass testing* Create different MOFs in practice and test them for the desired properties. This is not scalable and very (time) expensive, so we can only do this for a limited set of materials. 
+- *High throughput computational screening* predict the properties of different materials using simulations and approximations, the most accurate simulation is given by the computation of the density functionality theorem, which allows to approximate the properties using a quantum chemical model that simplifies the schrödinger's equations. The approximation given by machine learning also count in this category as we mostly approximate the results of simulations as they are to expensive.
+- *postsynthetic modification* Given a MOF that is already close to fulfilling our requirements we can selectively change lignants, nodes, inject impurities or combine different structures to combine some property components. This helps with fine tuning MOFs, but requires an already very good researched property and material field.
 
-Write about how the actual synthesis is done here...
+A practical synthesis can be done under different conditions, this depends on the components, the MOF, and the expected Material. There are as a short selection solvothermal and non-solvothermal methods (depending on temperature), microwave, electrochemical, mechanochemical or sonochemical synthesis. We do not consider different synthesis methods.
 ### How are MOFs represented in chemics and what data is there? 
-Exact Systems: Systre, Topos Pro
-3D Coordinate Systems, Topology Graphs, SMILES, MOF Key, MOF Id
+The representation of MOFs diverges in different databases depending on the methods the MOFs were obtained and what they are used for. 
+
+There are mainly to systems that are proven to be exact descriptors of the materials, Systre and Topos Pro, both developed by mathematicians include complicated geometry constructions to achieve a unique representation. These systems are not really useful for machine learning as they are not very interpretable.
+Also there is the representation in 3D Coordinate systems, here we again have to extract topology as geometry is mostly not considered in material discovery and deal with duplicates. Although a 3D representation can lead to a better runtime of DFT Simulations as we have a good intital guess. This leads to a representation as topology graphs, up until now these graphs provide the best descriptions for machine learning (see later). Lastly a less concise representation is given by textual descriptors, these should improve searchability and give some information to researchers, as such they aim to improve interpretability. The presentation that we will later use to train our transformers is MOF-IDs: Depending on the smiles descriptor 
+
+![](/images/MOFs/mofid.png)
+**Figure-1** Structure of MOF-ID and MOF-Key Identifiers TODO Add source 
+
 
 ## What can we do with machine learning
 Short summary of requirements for a machine learning solution
