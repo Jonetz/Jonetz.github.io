@@ -10,6 +10,9 @@ tags:
   - Transformer
 ---
 
+
+I did not do any research on this topic on my own, but only literature review, there is no content directly from me but only summary. If not directly cited the information is either considered common knowledge or from my references at the end, our main source that is reviewed is [1].
+
 # How can we find Metal-Organic-Frameworks with the desired properties using Transformers ? 
 Metal-Organic-Frameworks (MOFs) are materials that are highly tuneable to fullfil certain properties in the interaction with gases, this can be useful for different application fields (see later). This provides us with a multiplicity of potential materials from which we have to select the ones that fullfil our needs the best. Since this multiplicity is magnitudes greater than what conventional material science researchers could probe, there is a call for newer more scalable synthesis functionalities, that give researchers a closely preselected set of material combinations that fullfil certain desired properties. 
 
@@ -39,16 +42,23 @@ A practical synthesis can be done under different conditions, this depends on th
 The representation of MOFs diverges in different databases depending on the methods the MOFs were obtained and what they are used for. 
 
 There are mainly to systems that are proven to be exact descriptors of the materials, Systre and Topos Pro, both developed by mathematicians include complicated geometry constructions to achieve a unique representation. These systems are not really useful for machine learning as they are not very interpretable.
-Also there is the representation in 3D Coordinate systems, here we again have to extract topology as geometry is mostly not considered in material discovery and deal with duplicates. Although a 3D representation can lead to a better runtime of DFT Simulations as we have a good intital guess. This leads to a representation as topology graphs, up until now these graphs provide the best descriptions for machine learning (see later). Lastly a less concise representation is given by textual descriptors, these should improve searchability and give some information to researchers, as such they aim to improve interpretability. The presentation that we will later use to train our transformers is MOF-IDs: Depending on the smiles descriptor 
+Also there is the representation in 3D Coordinate systems, here we again have to extract topology as geometry is mostly not considered in material discovery and deal with duplicates. Although a 3D representation can lead to a better runtime of DFT Simulations as we have a good intital guess. This leads to a representation as topology graphs, up until now these graphs provide the best descriptions for machine learning (see later). Lastly a less concise representation is given by textual descriptors, these should improve searchability and give some information to researchers, as such they aim to improve interpretability. The presentation that we will later use to train our transformers is MOF-IDs: Derived from the SIMLES descriptor MOF-IDs are a textual descriptor of MOFs that include the different building blocks, as well a basic information of the net topology (still we consider this a topology unaware presentation of the net). One example of how the MOF-ID is created is given in *Figure-1*.
 
 ![](/images/MOFs/mofid.png)
 **Figure-1** Structure of MOF-ID and MOF-Key Identifiers TODO Add source 
 
-
 ## What can we do with machine learning
-Short summary of requirements for a machine learning solution
+As already indicated the most accurate data comes from density functionality theorem simulations, so we cannot expect to get a better result than that (we consider DFT data to be the golden standard, even if it is not technically correct). Thus we can only provide horizontal scalability, this means we are able to test a lot more MOFs for different properties and still be efficient, vertical scalability (this means our MOFs can be a lot more complex and we can enforce even complex hierarchical structures and a lot more smaller variations), and interpretability to help researchers find better MOFs contenders, that can be further analyzed in practice.
+
 ### State-of-the-Arts right now
-Conventional Algorithms and CGCNNs (what problems are there and how can we approach them in a logical convention)
+There are different sorts of algorithms with different kinds of sophistication and requirements. 
+A naive approach is given by conventional machine learning algorithms such as support-vector-machines, decision trees, or other model driven algorithms, here usually property descriptors will be given and only superficial relations between already known Frameworks can be analyzed.  
+
+The most accurate algorithm is given by *crystal graph convolutional neural networks* (CGCNN), they take as input a graph that represents the topology of one cycle of the MOF as shown in *Figure-2*. Then they combine the local effects these links and nodes have with convolutional layers and by increasing these effect windows in a given cascade of convolutional layers we extract the properties we trained for.  This configuration may have problems with the generalization of new building units (as they have to be covered extensively in the training data) and vertical scalability (as the required computation power increases enourmously if we want to train on larger MOF-configurations). This is a reason for Zhonglin et al. to propose a new architecture that aims to solve some of these issues.
+
+![](/images/MOFs/cgcnn.pdf)
+**Figure-1** Input preparation of a CGCNN 
+
 ### Transformers are expected to bring something to the Table ...
 How do we expect them to overcome some of the issues posed
 
