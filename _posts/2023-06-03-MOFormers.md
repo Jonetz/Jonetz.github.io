@@ -10,21 +10,31 @@ tags:
   - Transformer
 ---
 
-# How can we find Metal-Organic-Frameworks with the desired properties we want using Transformers ? 
+# How can we find Metal-Organic-Frameworks with the desired properties using Transformers ? 
+Metal-Organic-Frameworks (MOFs) are materials that are highly tuneable to fullfil certain properties in the interaction with gases, this can be useful for different application fields (see later). This provides us with a multiplicity of potential materials from which we have to select the ones that fullfil our needs the best. Since this multiplicity is magnitudes greater than what conventional material science researchers could probe, there is a call for newer more scalable synthesis functionalities, that give researchers a closely preselected set of material combinations that fullfil certain desired properties. 
 
-Just include a short intro to Material sciences and why there still is a problem
-## The problem
+Material science is a interdisciplinary field using mainly physics and chemics (we consider our work to be at quantum chemics level), with the goal to analyze, describe and syntetizise materials.
 
-Property Prediction and ...
-### Why we need new MOFs right now
+### Why we need new Methods to find specialized MOFs right now? 
+TODO Add sources 
 
-what are fields mofs are used and why do we need a lot with different properites
+The main usages of MOFs constitutes the separation and storage of gas atoms, this makes it a good material for air-/pollution filters, drug delivery, water harvesting, Hydrogen Storage, CO2-cleansing, and many more applications. So can for instance MOF elements be added to conventional active coal filters in order to filter certain pollutants more targeted depending on the factory type and pollutant output. Also MOFs became a contender for the more recently intensified search for alternative fuel carriers, as the can store a large amount of hydrogen at subatmospheric pressure levels.
+
+These properties are mainly due to the microsporous nature of MOFs, as they are build as periodic net of metal units and organic connectors they include highly regular structures with a lot of holes in them. A good analogy given by experts is the one of an atomic sponge, where we have to tune the atomic stickiness specified in order to achieve the wanted result. Of course we do not only have to look at the physical size of holes in this net, but rather at a lot of different indicators such as charge distribution and different changes in the fields given some interactions.
+
+We will later see that MOFs are build like legos that only have to be assembled with out of the box parts, for this we have a whole catalogue of building units that we can combine hierarchically and tune very precise. This simplifes the problem from finding a stable configuration to predicting whether a stable configuration provides the properties we want. The synthesis workflow we propose to optimize includes first of all extracting possible MOFs either from academic databases or construct a large number of self-made Frameworks from a building unit catalogue, the we want to filter them with high throughput analysis and only take the few best scoring ones to practice, where they will be generated and iteratively modified to recieve the best possible material for the given requirements.
 ## What actually are MOFs?
+Metal-Organic-Frameworks have two special components, as the name suggests one of them is a metal also referred to as node. This metal-node takes the function of a vertex in our cyclic net and the different nodes are connected with organic linkers, also referred to as lignants. These blocks are also referred to as secondary-building-units (SBUs). Moreover SBUs can include some more complex parts from MOF structures (this is due to the possiblity of structuring MOFs hierachically).
 
-Typical building blocks and sbus, how are they obtained
+From this description we know the parts that can be used to assemble a basic MOF, but this is still not enough as the same materials often can have different variants, introduced by differences in geometry as well as topology. Depending on their method of synthesis and possible environments the geometry (i.e. how the links and nodes are placed in the space relative to each other) may change, so a MOF can change the geometry for instance if it stores a certain material. If only the geometry differs we generally consider it to be the same MOFs, as long as the topology is homomorphic. Other than that if the topologies differ but the same materials are included we consider this to be another MOF.  The detection and removal of duplicates is a still non trivial task in practice, but we do not consider this a problem we have to deal with from a machine learning perspective.  
 ### How is discovery done right now? 
+The structured syntesis of new MOFs with specific properties is also referred to as discovery. Here the chemists have developed a suite of different methods to facilitate this process:
+-Chemist Knowledge
+-Mass testing
+- High thorughput compuational screening
+- postsynthetic modification
 
-Chemist Knowledge, Mass testing, Htihg thorughput compuational screening, postsynthetic modification, Synthesis
+Write about how the actual synthesis is done here...
 ### How are MOFs represented in chemics and what data is there? 
 Exact Systems: Systre, Topos Pro
 3D Coordinate Systems, Topology Graphs, SMILES, MOF Key, MOF Id
