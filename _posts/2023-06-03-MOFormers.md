@@ -57,19 +57,36 @@ A naive approach is given by conventional machine learning algorithms such as su
 The most accurate algorithm is given by *crystal graph convolutional neural networks* (CGCNN), they take as input a graph that represents the topology of one cycle of the MOF as shown in *Figure-2*. Then they combine the local effects these links and nodes have with convolutional layers and by increasing these effect windows in a given cascade of convolutional layers we extract the properties we trained for.  This configuration may have problems with the generalization of new building units (as they have to be covered extensively in the training data) and vertical scalability (as the required computation power increases enourmously if we want to train on larger MOF-configurations). This is a reason for Zhonglin et al. to propose a new architecture that aims to solve some of these issues.
 
 ![](/images/MOFs/cgcnn.png)
-**Figure-1** Input preparation of a CGCNN 
+**Figure-1** Input preparation of a CGCNN TODO Add source
 
-### Transformers are expected to bring something to the Table ...
-How do we expect them to overcome some of the issues posed
+### The Transformer architecture
+Now finally we come to the new paper that we review. Zhonglin et al. are using transformers for material property prediction. To accomplish this, the authors utilize the MOFID format, which provides string representations that can be naturally tokenized. These tokenzied strings provide an input instance, that includes information about the secondary building units (as arguably the most important data for material behaviour), as well as some hints on the topology of the network. These strings will be tokenized into single tokens and transformed into an embedded vector representing this token. After this attention maps are computed.
+Attention Maps can either refer to self-attention or to cross-attention, both are used in transformer models. Self-attention enables us to capture relations between the instance and cross-attention enables us to relate those semantics to other instances. With employing both types of attention we are enabled to relate the internal structure of the input to possible output instances. A attention head will compute the degree of relevance between an input or output token and itself or other tokens at the given position.
+Generally multiple attention heads are used and their output combined and normalized (in our case it will be 8 heads).
+The most simplified explanation of what a transformer does is: given a part of the input, at which other parts do you have to look to understand the semantics of this part in the overall instance?.
+These building blocks will be followed by a shallow network to relate these semantic relations to a desired material property (for instance: C02 adsorption).
 
+Transformers as such provide very good results, given that certain criteria are fullfilled. Firstly they need a lot more training data then deep neural networks or traditional machine learning approaches, this becomes a problem since data availability is still sparse in the context of MOFs and their porperties. Moreover the data is very inhomgenous, which means there are a lot of properties of which we only have certain values given and a quality that is not consistent over all datasets. Secondly we still have to deal with the input format, which is topology agnostic and as such only has limited capabilites of mapping the structure onto the special properties. This provides us with an issue, as we need certain considerations about topology to achive the accuracy we desire, since as explained previously, only considering the building units opens up the representation to a lot of different invariances that come with different material properties.
+
+The authors aim to overcome these issues by self-supervised training using the already existent and sufficiently accurate CGCNN solution. Here we use this available model to learn a suitable compressed representation of the input instance. This has several advantages: We can learn the transformer model parameters more data efficient, as we now only need the MOFID and the Graph now to train a representation, rather than using different properties and resetting the deeper layers severeal times in the training process (as you would probably to in a multi task training). 
+Also we now hope to learn a latent representation that includes the topology considerations, which is included in the representation given by the CGCNN as here we have the complete topology as input. So we try to get the transformer to firstly learn a representation that includes topology that is missing from the input data, in order to later use this representation to predict material properties more correctly later on. 
 ### Traning of our Transformers
 Self-Supervised Training Methods
 
+Dual training with CGCNN
+
+Data Sets used for training
+
 ## Evaluation
+
 What the researchers took from it ?
 - t-SNE
-- Head weights 
-- Speedup
+
+- Head weight interpretation
+
+- Training data speedup
+
+- Accuracy evaluation
 
 ### My Commentary
 
