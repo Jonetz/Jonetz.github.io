@@ -115,7 +115,7 @@ So now that we have a satisfying representation we need to do the original prope
 
 All these datasets have been used to train the transformer once simply supervised and once with pretraining as described above. The self-supervised training increases accuracy, which makes us confident that the approach of the authors works conceptually.
 
-#### Latent Representations
+### Latent Representations
 While doing representation learning with CGCNN and MOFormer we can also visualize the clustering of the most common topologies to gain insight in the role of topology in Property Prediction. We can see this in Figure 6, where Zhonglin et al. compare the clustering to topology type and C02 adsorption. They see that the transformer representation still gives more weight to the topology encoding, as the topology category is given more explicitly in contrast to the results of the neural network. This means the transformer will still perform poorly on rare topologies.
 <div style="text-align:center">
     <a href="">
@@ -125,15 +125,24 @@ While doing representation learning with CGCNN and MOFormer we can also visualiz
     <i>Figure 5: The clustering of the latent representations from [1]. <br> In (a) and (b) we see the transformers representations, once colored in by the gas adsorption and once by the topology. <br> In (c) and (d) we see the same data for CGCNN representations respectively.</i>
 </div>
 
+### Head weight evaluation 
+
+<div style="text-align:center">
+    <a href="">
+        <img src="/images/MOFs/attn_map.png" alt="ATTN" style="width:70%;height:70%">
+    </a>
+    <br>
+    <i>Figure 8: Example of the learned multi-head attention, shows atttention between metal nodes and topologies</i>
+</div>
+
 ## Evaluation
 
 What the researchers took from it ?
-
-- Head weight interpretation
-
-- Training data speedup
+- Data efficiency
 
 - Accuracy evaluation
+
+- Effects on current workings such as: Vertical and Horizontal Scaling, no need for complete 3D Models, further insights
 
 ### My Commentary
 
