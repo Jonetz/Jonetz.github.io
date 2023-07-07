@@ -11,6 +11,7 @@ tags:
 ---
 
 
+
 I did not do any research on this topic on my own, but only literature review, there is no content directly from me but only summary. If not directly cited the information is either considered common knowledge or from my references at the end, our main source that is reviewed is [1].
 
 # How can we find Metal-Organic-Frameworks with the desired properties using Transformers ? 
@@ -29,7 +30,9 @@ We will later see that MOFs are build like legos that only have to be assembled 
 ## What actually are MOFs?
 Metal-Organic-Frameworks have two special components, as the name suggests one of them is a metal also referred to as node. This metal-node takes the function of a vertex in our cyclic net and the different nodes are connected with organic linkers, also referred to as lignants. These blocks are also referred to as secondary-building-units (SBUs). Moreover SBUs can include some more complex parts from MOF structures (this is due to the possiblity of structuring MOFs hierachically).
 
-<img src="images/MOFs/mof5.png" width="200">
+<div class="img-container">
+  ![Image Title](/images/MOFs/mof5.png)
+</div>
 **Figure-1** Periodic elements from MOF5, pores are illustrated by spheres (via wikipedia from Tony Boehle)
 
 From this description we know the parts that can be used to assemble a basic MOF, but this is still not enough as the same materials often can have different variants, introduced by differences in geometry as well as topology. Depending on their method of synthesis and possible environments the geometry (i.e. how the links and nodes are placed in the space relative to each other) may change, so a MOF can change the geometry for instance if it stores a certain material. If only the geometry differs we generally consider it to be the same MOFs, as long as the topology is homomorphic. Other than that if the topologies differ but the same materials are included we consider this to be another MOF.  The detection and removal of duplicates is a still non trivial task in practice, but we do not consider this a problem we have to deal with from a machine learning perspective.  
@@ -47,8 +50,13 @@ The representation of MOFs diverges in different databases depending on the meth
 There are mainly to systems that are proven to be exact descriptors of the materials, Systre and Topos Pro, both developed by mathematicians include complicated geometry constructions to achieve a unique representation. These systems are not really useful for machine learning as they are not very interpretable.
 Also there is the representation in 3D Coordinate systems, here we again have to extract topology as geometry is mostly not considered in material discovery and deal with duplicates. Although a 3D representation can lead to a better runtime of DFT Simulations as we have a good intital guess. This leads to a representation as topology graphs, up until now these graphs provide the best descriptions for machine learning (see later). Lastly a less concise representation is given by textual descriptors, these should improve searchability and give some information to researchers, as such they aim to improve interpretability. The presentation that we will later use to train our transformers is MOF-IDs: Derived from the SIMLES descriptor MOF-IDs are a textual descriptor of MOFs that include the different building blocks, as well a basic information of the net topology (still we consider this a topology unaware presentation of the net). One example of how the MOF-ID is created is given in *Figure-1*.
 
-![](/images/MOFs/mofid.png)
-**Figure-1** Structure of MOF-ID and MOF-Key Identifiers, taken from [2]
+<div style="text-align:center">
+    <a href="https://de.wikipedia.org/wiki/MOF-5#/media/Datei:MOF-5.png">
+        <img src="/images/MOFs/mof5.png" alt="MOF5" style="width:30%;height:30%">
+    </a>
+    <br>
+    <i>Figure 1: Structure of MOF-ID and MOF-Key Identifiers, taken from [2]</i>
+</div>
 
 ## What can we do with machine learning
 As already indicated the most accurate data comes from density functionality theorem simulations, so we cannot expect to get a better result than that (we consider DFT data to be the golden standard, even if it is not technically correct). Thus we can only provide horizontal scalability, this means we are able to test a lot more MOFs for different properties and still be efficient, vertical scalability (this means our MOFs can be a lot more complex and we can enforce even complex hierarchical structures and a lot more smaller variations), and interpretability to help researchers find better MOFs contenders, that can be further analyzed in practice.
