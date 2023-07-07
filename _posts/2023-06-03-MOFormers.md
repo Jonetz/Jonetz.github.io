@@ -29,6 +29,9 @@ We will later see that MOFs are build like legos that only have to be assembled 
 ## What actually are MOFs?
 Metal-Organic-Frameworks have two special components, as the name suggests one of them is a metal also referred to as node. This metal-node takes the function of a vertex in our cyclic net and the different nodes are connected with organic linkers, also referred to as lignants. These blocks are also referred to as secondary-building-units (SBUs). Moreover SBUs can include some more complex parts from MOF structures (this is due to the possiblity of structuring MOFs hierachically).
 
+![](/images/MOFs/mof5.png)
+**Figure-1** Periodic elements from MOF5, pores are illustrated by spheres (via wikipedia from Tony Boehle)
+
 From this description we know the parts that can be used to assemble a basic MOF, but this is still not enough as the same materials often can have different variants, introduced by differences in geometry as well as topology. Depending on their method of synthesis and possible environments the geometry (i.e. how the links and nodes are placed in the space relative to each other) may change, so a MOF can change the geometry for instance if it stores a certain material. If only the geometry differs we generally consider it to be the same MOFs, as long as the topology is homomorphic. Other than that if the topologies differ but the same materials are included we consider this to be another MOF.  The detection and removal of duplicates is a still non trivial task in practice, but we do not consider this a problem we have to deal with from a machine learning perspective.  
 ### How is discovery done right now? 
 The structured synthesis of new MOFs with specific properties is also referred to as discovery. Here the chemists have developed a suite of different methods to facilitate this process:
@@ -45,7 +48,7 @@ There are mainly to systems that are proven to be exact descriptors of the mater
 Also there is the representation in 3D Coordinate systems, here we again have to extract topology as geometry is mostly not considered in material discovery and deal with duplicates. Although a 3D representation can lead to a better runtime of DFT Simulations as we have a good intital guess. This leads to a representation as topology graphs, up until now these graphs provide the best descriptions for machine learning (see later). Lastly a less concise representation is given by textual descriptors, these should improve searchability and give some information to researchers, as such they aim to improve interpretability. The presentation that we will later use to train our transformers is MOF-IDs: Derived from the SIMLES descriptor MOF-IDs are a textual descriptor of MOFs that include the different building blocks, as well a basic information of the net topology (still we consider this a topology unaware presentation of the net). One example of how the MOF-ID is created is given in *Figure-1*.
 
 ![](/images/MOFs/mofid.png)
-**Figure-1** Structure of MOF-ID and MOF-Key Identifiers TODO Add source 
+**Figure-1** Structure of MOF-ID and MOF-Key Identifiers, taken from [2]
 
 ## What can we do with machine learning
 As already indicated the most accurate data comes from density functionality theorem simulations, so we cannot expect to get a better result than that (we consider DFT data to be the golden standard, even if it is not technically correct). Thus we can only provide horizontal scalability, this means we are able to test a lot more MOFs for different properties and still be efficient, vertical scalability (this means our MOFs can be a lot more complex and we can enforce even complex hierarchical structures and a lot more smaller variations), and interpretability to help researchers find better MOFs contenders, that can be further analyzed in practice.
@@ -66,15 +69,25 @@ Generally multiple attention heads are used and their output combined and normal
 The most simplified explanation of what a transformer does is: given a part of the input, at which other parts do you have to look to understand the semantics of this part in the overall instance?.
 These building blocks will be followed by a shallow network to relate these semantic relations to a desired material property (for instance: C02 adsorption).
 
+![](/images/MOFs/transformer.png)
+**Figure-1** The MOFormer architecture proposed in [1].
+
 Transformers as such provide very good results, given that certain criteria are fullfilled. Firstly they need a lot more training data then deep neural networks or traditional machine learning approaches, this becomes a problem since data availability is still sparse in the context of MOFs and their porperties. Moreover the data is very inhomgenous, which means there are a lot of properties of which we only have certain values given and a quality that is not consistent over all datasets. Secondly we still have to deal with the input format, which is topology agnostic and as such only has limited capabilites of mapping the structure onto the special properties. This provides us with an issue, as we need certain considerations about topology to achive the accuracy we desire, since as explained previously, only considering the building units opens up the representation to a lot of different invariances that come with different material properties.
+
+### Traning of the Transformers
 
 The authors aim to overcome these issues by self-supervised training using the already existent and sufficiently accurate CGCNN solution. Here we use this available model to learn a suitable compressed representation of the input instance. This has several advantages: We can learn the transformer model parameters more data efficient, as we now only need the MOFID and the Graph now to train a representation, rather than using different properties and resetting the deeper layers severeal times in the training process (as you would probably to in a multi task training). 
 Also we now hope to learn a latent representation that includes the topology considerations, which is included in the representation given by the CGCNN as here we have the complete topology as input. So we try to get the transformer to firstly learn a representation that includes topology that is missing from the input data, in order to later use this representation to predict material properties more correctly later on. 
-### Traning of our Transformers
-Self-Supervised Training Methods
 
-Dual training with CGCNN
+![](/images/MOFs/training.png)
+**Figure-1** The self-supervised training proposed in [1].
 
+So now that we have a satisfying representation we need to do the original property prediction, this is done via the standart training algorithms. The authors include data from several chemist databases:
+- ...
+- ...
+- CoRe
+- qMOF
+- hMOF
 Data Sets used for training
 
 ## Evaluation
