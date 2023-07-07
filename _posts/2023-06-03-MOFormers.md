@@ -56,7 +56,7 @@ Also there is the representation in 3D Coordinate systems, here we again have to
         <img src="/images/MOFs/mofid.png" alt="MOFID" style="width:80%;height:80%">
     </a>
     <br>
-    <i>Figure 1: Structure of MOF-ID and MOF-Key Identifiers, taken from [2]</i>
+    <i>Figure 2: Structure of MOF-ID and MOF-Key Identifiers, taken from [2]</i>
 </div>
 
 ## What can we do with machine learning
@@ -88,7 +88,7 @@ These building blocks will be followed by a shallow network to relate these sema
         <img src="/images/MOFs/transformer.png" alt="TRANS" style="width:70%;height:70%">
     </a>
     <br>
-    <i>Figure 3: The MOFormer architecture proposed in [1].</i>
+    <i>Figure 4: The MOFormer architecture proposed in [1].</i>
 </div>
 
 Transformers as such provide very good results, given that certain criteria are fullfilled. Firstly they need a lot more training data then deep neural networks or traditional machine learning approaches, this becomes a problem since data availability is still sparse in the context of MOFs and their porperties. Moreover the data is very inhomgenous, which means there are a lot of properties of which we only have certain values given and a quality that is not consistent over all datasets. Secondly we still have to deal with the input format, which is topology agnostic and as such only has limited capabilites of mapping the structure onto the special properties. This provides us with an issue, as we need certain considerations about topology to achive the accuracy we desire, since as explained previously, only considering the building units opens up the representation to a lot of different invariances that come with different material properties.
@@ -103,7 +103,7 @@ Also we now hope to learn a latent representation that includes the topology con
         <img src="/images/MOFs/training.png" alt="TRAIN" style="width:70%;height:70%">
     </a>
     <br>
-    <i>Figure 3: The self-supervised training proposed in [1].</i>
+    <i>Figure 5: The self-supervised training proposed in [1].</i>
 </div>
 
 So now that we have a satisfying representation we need to do the original property prediction, this is done via the standart training algorithms. The authors include data from several material databases:
@@ -115,10 +115,19 @@ So now that we have a satisfying representation we need to do the original prope
 
 All these datasets have been used to train the transformer once simply supervised and once with pretraining as described above. The self-supervised training increases accuracy, which makes us confident that the approach of the authors works conceptually.
 
+#### Latent Representations
+While doing representation learning with CGCNN and MOFormer we can also visualize the clustering of the most common topologies to gain insight in the role of topology in Property Prediction. We can see this in Figure 6, where Zhonglin et al. compare the clustering to topology type and C02 adsorption. They see that the transformer representation still gives more weight to the topology encoding, as the topology category is given more explicitly in contrast to the results of the neural network. This means the transformer will still perform poorly on rare topologies.
+<div style="text-align:center">
+    <a href="">
+        <img src="/images/MOFs/clustering.png" alt="TSNE" style="width:70%;height:70%">
+    </a>
+    <br>
+    <i>Figure 5: The clustering of the latent representations from [1]. <br> In (a) and (b) we see the transformers representations, once colored in by the gas adsorption and once by the topology. <br> In (c) and (d) we see the same data for CGCNN representations respectively.</i>
+</div>
+
 ## Evaluation
 
 What the researchers took from it ?
-- t-SNE
 
 - Head weight interpretation
 
