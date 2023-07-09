@@ -13,20 +13,20 @@ tags:
 I did not do any research on this topic on my own, but only literature review, there is no content directly from me but only summary. If not directly cited the information is either considered common knowledge or from my references at the end, our main source that is reviewed is [1].
 
 # How can we find Metal-Organic-Frameworks with the desired properties using Transformers ? 
-Metal-Organic-Frameworks (MOFs) are materials that are highly tuneable to fullfil certain properties in the interaction with gases, this can be useful for different application fields (see later). This provides us with a multiplicity of potential materials from which we have to select the ones that fullfil our needs the best. Since this multiplicity is magnitudes greater than what conventional material science researchers could probe, there is a call for newer more scalable synthesis functionalities, that give researchers a closely preselected set of material combinations that fullfil certain desired properties. 
+MOFs are highly tunable materials that can exhibit specific properties when interacting with gases. This versatility makes them valuable in various application fields (as discussed later). This provides us with a multiplicity of potential materials from which we have to select the ones that fullfil our needs the best. Due to the vast number of possible combinations, beyond the reach of conventional material science research, there is a need for scalable synthesis methods that offer researchers a preselected set of material combinations tailored to desired properties.
 
-Material science is a interdisciplinary field using mainly physics and chemics (we consider our work to be at quantum chemics level), with the goal to analyze, describe and syntetizise materials.
+Material science is a interdisciplinary field that primarily draws on physics and chemistry (our work will be located in the quantum chemistry section of material sciences). Its objective is to analyze, describe and syntetizise materials.
 
 ### Why we need new Methods to find specialized MOFs right now? 
 TODO Add sources 
 
-The main usages of MOFs constitutes the separation and storage of gas atoms, this makes it a good material for air-/pollution filters, drug delivery, water harvesting, Hydrogen Storage, CO2-cleansing, and many more applications. So can for instance MOF elements be added to conventional active coal filters in order to filter certain pollutants more targeted depending on the factory type and pollutant output. Also MOFs became a contender for the more recently intensified search for alternative fuel carriers, as the can store a large amount of hydrogen at subatmospheric pressure levels.
+ MOFs find significant applications in gas separation and storage, this makes it a good material for air-/pollution filters, drug delivery, water harvesting, hydrogen Storage, CO2-cleansing, and various other uses. For example MOF elements be incorporated to conventional active coal filters in order to filter more effectively targetted certain pollutants depending on the factory type and pollutant output. Also MOFs became a contender for the more recently intensified search for alternative fuel carriers, as the can store a large amount of hydrogen at subatmospheric pressure levels.
 
-These properties are mainly due to the microsporous nature of MOFs, as they are build as periodic net of metal units and organic connectors they include highly regular structures with a lot of holes in them. A good analogy given by experts is the one of an atomic sponge, where we have to tune the atomic stickiness specified in order to achieve the wanted result. Of course we do not only have to look at the physical size of holes in this net, but rather at a lot of different indicators such as charge distribution and different changes in the fields given some interactions.
+These properties primarily arise from the micro-porous nature of MOFs, as they are build as periodic networks  of metal units and organic connectors. These structures exhibit high regularity with a lot of pores in them. A good analogy given by experts is the one of an atomic sponge, where we have to tune the atomic stickiness specified in order to achieve the wanted result. It is essential to consider various factors beyond the physical size of the pores, such as for instance charge distribution and variations in the fields resulting from different interactions.
 
-We will later see that MOFs are build like legos that only have to be assembled with out of the box parts, for this we have a whole catalogue of building units that we can combine hierarchically and tune very precise. This simplifes the problem from finding a stable configuration to predicting whether a stable configuration provides the properties we want. The synthesis workflow we propose to optimize includes first of all extracting possible MOFs either from academic databases or construct a large number of self-made Frameworks from a building unit catalogue, the we want to filter them with high throughput analysis and only take the few best scoring ones to practice, where they will be generated and iteratively modified to recieve the best possible material for the given requirements.
+We will later see that MOFs are build like legos that only have to be assembled with out of the box parts, for this we have a whole catalogue of building units that we can combine hierarchically and tune very precise. This simplifes the problem from finding a stable configuration to predicting whether a stable configuration provides the properties we want. The synthesis workflow we propose to optimize includes initially extracting potential MOFs from academic databases or constructing a large number of custom frameworks using a building unit catalog. These MOFs are then filtered through high-throughput analysis, retaining only the top-scoring candidates for further experimentation. The selected MOFs are generated and iteratively modified to achieve the best possible material for the desired requirements.
 ## What actually are MOFs?
-Metal-Organic-Frameworks have two special components, as the name suggests one of them is a metal also referred to as node. This metal-node takes the function of a vertex in our cyclic net and the different nodes are connected with organic linkers, also referred to as lignants. These blocks are also referred to as secondary-building-units (SBUs). Moreover SBUs can include some more complex parts from MOF structures (this is due to the possiblity of structuring MOFs hierachically).
+Metal-Organic-Frameworks consist of two key components, as the name suggests, one compontnet is a metal also referred to as node. This metal-node serves as a vertex in our cyclic net and the different nodes are connected with organic linkers, also referred to as lignants. These building blocks are commonly known as secondary building units (SBUs). Additionally, SBUs can incorporate some more complex compontents from MOF structures (this is due to the possiblity of structuring MOFs hierachically).
 
 <div style="text-align:center">
     <a href="https://de.wikipedia.org/wiki/MOF-5#/media/Datei:MOF-5.png">
@@ -122,27 +122,26 @@ While doing representation learning with CGCNN and MOFormer we can also visualiz
         <img src="/images/MOFs/clustering.png" alt="TSNE" style="width:70%;height:70%">
     </a>
     <br>
-    <i>Figure 5: The clustering of the latent representations from [1]. <br> In (a) and (b) we see the transformers representations, once colored in by the gas adsorption and once by the topology. <br> In (c) and (d) we see the same data for CGCNN representations respectively.</i>
+    <i>Figure 6: The clustering of the latent representations from [1]. <br> In (a) and (b) we see the transformers representations, once colored in by the gas adsorption and once by the topology. <br> In (c) and (d) we see the same data for CGCNN representations respectively.</i>
 </div>
 
 ### Head weight evaluation 
+One thing that was also remarked by the authors is, that we can use the visualization of the attention weights to find out how the transformer learns to interpret an instance. This means we can extract how certain parts in the model attend to other parts and make it a bit more explainable what is important in an architecture. The authors for instance remark that the metal node ytterium and the pcu topology encoding attend very strongly in head 1, this means in order to unterstand the effects of the MOF we can especially look at these combinations of nodes and topologies. 
 
 <div style="text-align:center">
     <a href="">
         <img src="/images/MOFs/attn_map.png" alt="ATTN" style="width:70%;height:70%">
     </a>
     <br>
-    <i>Figure 8: Example of the learned multi-head attention, shows atttention between metal nodes and topologies</i>
+    <i>Figure 7: Example of the learned multi-head attention, shows atttention between metal nodes and topologies</i>
 </div>
 
 ## Evaluation
-
 What the researchers took from it ?
-- Data efficiency
-
-- Accuracy evaluation
-
-- Effects on current workings such as: Vertical and Horizontal Scaling, no need for complete 3D Models, further insights
+- **Data efficiency** We can see that in very small instances the MOFormer model outperforms CGCNN, which makes it more valuable if the training data set is small. Although in larger training data sets CGCNN always outperforms transformer architectures.
+- **Accuracy evaluation** While the accuracy MOFormers is signifcantly worse than the ones of Graph Neural Networks, we can see that the dual pretraining helps increase the accuray of both. It is still to see weather on large datasets (>1Mio) we will get more accurate results with transformers than CGCNNs
+- MOFormer still provide a considerable vertical scale up, as now the prediction does not rely on atoms anymore, but tokens that represent structure properties and secondary building units that can be of different sizes. Also we have horizontal scale up, as now we are a lot more cost effective since we can now compute the property prediction more cheaply, which is necessary considering that the main usage of these models is high throughput computational screening and we expect the number of hypothetical instances to grow in future enormously.
+- We provide a more lightweight representation of MOFs as input format, which enables researchers to come up with new MOFs, test them more cheaply and only investigating promising results later on.
 
 ### My Commentary
 
