@@ -57,6 +57,9 @@ Also there is the representation in 3D Coordinate systems, here we again have to
     <i>Figure 2: Structure of MOF-ID and MOF-Key Identifiers, taken from [2]</i>
 </div>
 
+### What is it actually that we are trying to predict?
+We want a network that is ideal for finetuning towards the prediction of certain material properties. These properties include for example CO2, Methane or H2 adsorption rates in atmospheric pressure, or more specific attributes such as storage for a specifc drug that now can be delivered straight in a non gasenous form. These properties are often so specific that each model has to be adjusted (at least in the regression head) for each use, therefore it is essential to provide a most versatile model that includes a lot of different material parameters in the latent representation that has to be finetuned.
+
 ## What can we do with machine learning
 As previously mentioned, density functional theory (DFT) simulations provide the most accurate data, making it the benchmark for comparison (considered the gold standard, despite its inherent limitations). Consequently our approach only offers a more computationally efficient method, this means in contrast to (sub-)atomic simulations we are able to test a lot more MOFs for different properties and still be efficient, vertical scalability (this means our MOFs can be a lot more complex and we can enforce even complex hierarchical structures and a lot more smaller variations), and interpretability to help researchers find better MOFs contenders, that can be further analyzed in practice.
 
@@ -139,8 +142,6 @@ What the researchers took from it ?
 - **Accuracy evaluation** While the accuracy MOFormers is signifcantly worse than the ones of Graph Neural Networks, we can see that the dual pretraining helps increase the accuray of both. It is still to see weather on large datasets (>1Mio) we will get more accurate results with transformers than CGCNNs
 - MOFormer still provide a considerable vertical scale up, as now the prediction does not rely on atoms anymore, but tokens that represent structure properties and secondary building units that can be of different sizes. Also we have horizontal scale up, as now we are a lot more cost effective since we can now compute the property prediction more cheaply, which is necessary considering that the main usage of these models is high throughput computational screening and we expect the number of hypothetical instances to grow in future enormously.
 - We provide a more lightweight representation of MOFs as input format, which enables researchers to come up with new MOFs, test them more cheaply and only investigating promising results later on.
-
-### My Commentary
 
 ## References 
 
