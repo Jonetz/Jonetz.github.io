@@ -56,9 +56,3 @@ Skills
   * Github
   * Linux/Windows OS
   * MS Word and Excel :D
-
-Publications
-======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
