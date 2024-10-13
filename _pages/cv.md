@@ -16,48 +16,49 @@ Education
 
 Work experience
 ======
-* Winter Term 2021: Teaching Assistant
-  * University Stuttgart
-  * Duties included: Comp. Sci. Introductory Course support
-  * Supervision: Institute for Information Security
 
-* Summer Term 2022: Teaching Assistant
+* April 2024 - April 2025: Research Assistant
+  * University Stuttgart - Institute of Artificial Intelligence
+  * Cooperation with the Sates Geoinformatics Department
+  * Automated Detection of Trees with Shapes and Heights for planning services
+  * See presentation from Intergeo 2024 or the tool  https://3dweb.lgl-bw.de/3D/SmartVillages/ (still very much in development)
+
+* Summer Term 2022 & 2024: Teaching Assistant
   * University Stuttgart
   * Modelling (Data-/Processmodelling)
   * Duties included: Correction and Student-support
   * Supervision: Institute for distibuted and parallel systems
 
-* Since Summer Term 2023: Working Student
+* Summer Term 2023: Working Student
   * Mercedes Benz Research & Development
   * Autonomous Driving Camera Components
-  * Duties included: Data-Handling, (dev-)car management, general support#
+  * Duties included: Data-Handling, ADAS requirements management, car management, general support
+
+* Winter Term 2021: Teaching Assistant
+  * University Stuttgart
+  * Duties included: Comp. Sci. Introductory Course support
+  * Supervision: Institute for Information Security
+ 
   
 Skills
 ======
 * Programming Skills
+  * Python (including several Frameworks such as Pytorch, Tensorflow, PyQT, Leaflet, ...)
   * Java
-  * Python
   * C++
   * Arduino
   * SQL
   * ...
+
 * Computer Skills
-  * MS Word and Excel :D
   * Latex
+  * Jira
   * Github
   * Linux/Windows OS
-
-* Skill 3
+  * MS Word and Excel :D
 
 Publications
 ======
   <ul>{% for post in site.publications %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-
-Teaching
-======
-  <ul>{% for post in site.teaching %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
