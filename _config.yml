@@ -82,9 +82,9 @@ analytics:
 author:
   name             : "Jonas Geiselhart"
   avatar           : "profile.jpg"
-  bio              : "Currently i am studying for my Masters in Artifical Intelligence and Data Science at the University of Stuttgart"
+  bio              : 
   location         : "Weil der Stadt"
-  employer         :
+  employer         : 
   pubmed           :
   googlescholar    :
   email            :
