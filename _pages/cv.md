@@ -23,7 +23,7 @@ Education
 **University of Stuttgart, Stuttgart-Vaihingen**  
 *B.Sc. Computer Science* (Sep 2019 – Oct 2022)  
 – Graduated (GPA 2.1)  
-– Bachelor thesis: *Private Function Evaluation with Oblivious RAM at the Institute for Information Security* (Available here)  
+– Bachelor thesis: *Private Function Evaluation with Oblivious RAM at the Institute for Information Security*
 - Focus on cryptography and common data science techniques, such as data extraction, modelling, and visualization.
 
 **Johannes-Kepler-Gymnasium, Weil der Stadt**  
@@ -37,7 +37,7 @@ Employment
 **Research Assistant** — *University of Stuttgart, Institute for Artificial Intelligence* (Apr 2024 – Apr 2025)  
 – Development of self-supervised learning algorithms and transfer learning for remote sensing applications in tree crown segmentation.  
 – Implementation of a framework for large-scale inference in computer vision.  
-- A description can be seen (here)[https://www.adv-online.de/Veroeffentlichungen/Vortraege-Praesentationen/binarywriterservlet?imgUid=fca5b0ef-24b0-2915-dd8f-761533daed3f&uBasVariant=11111111-1111-1111-1111-111111111111]
+- A description can be seen [here](https://www.adv-online.de/Veroeffentlichungen/Vortraege-Praesentationen/binarywriterservlet?imgUid=fca5b0ef-24b0-2915-dd8f-761533daed3f&uBasVariant=11111111-1111-1111-1111-111111111111)
 
 **Working Student** — *Mercedes-Benz, Sindelfingen (Research & Development Camera Components/Active Safety)* (Mar 2023 – Aug 2023)  
 – Requirements management for camera algorithms in autonomous driving (Levels S2–S3).  
