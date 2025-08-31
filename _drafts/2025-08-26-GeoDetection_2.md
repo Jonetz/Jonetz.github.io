@@ -32,8 +32,26 @@ Evaluating the training we can see the precision and recieve the results as:
 | :---    |   :---  |     :--- |
 | 63.3    | 84.4    | 74.0     |
 
-applying inference to the trained model we get the following images:
-" TODO ADD Images Good + Bad "
+applying inference to the trained model we get the following samples:
+<div style="text-align:center">
+    <a>
+        <img src="/images/GeoDetection/solar_images_good_1.png" alt="Good Sample of Rooftop areas (1)" style="width:70%;height:70%"> <br>
+        <img src="/images/GeoDetection/solar_images_good_2.png" alt="Good Sample of Rooftop areas (2)" style="width:70%;height:70%"> <br>
+        <img src="/images/GeoDetection/solar_images_good_3.png" alt="Good Sample of Rooftop areas (3)" style="width:70%;height:70%">
+    </a>
+    <br>
+    <i>Samples of urban predictions of the model trained with only public informations.</i>
+</div>
+
+<div style="text-align:center">
+    <a>
+        <img src="/images/GeoDetection/solar_images_worse_1.png" alt="Bad samples of prediction at a raliway station (1)" style="width:70%;height:70%"> <br>
+        <img src="/images/GeoDetection/solar_images_worse_2.png" alt="Bad samples of prediction at a parking place" style="width:70%;height:70%"> <br>
+        <img src="/images/GeoDetection/solar_images_worse_3.png" alt="Bad predictions at a roof windows" style="width:70%;height:70%">
+    </a>
+    <br>
+    <i>Samples of different kind of wrong predictions, such as in the first image: railway lines with similar rectangular patterns and roof lights, secondly from parking spaces and in the third image a hall with roof windows as well as solar panels (here it is even hard for humans to tell both apart).</i>
+</div>
 
 So we can see the Precision is okay, but on a landwide scale there are several problems, especially since, many complicated structures especially in big cities are present in the real life inference data, that are not represented adequately in the training data. This leads to high confidence false positives. In order to mitigate this we have to further annotate real data. 
 
