@@ -26,16 +26,17 @@ Since we already have the training and inference logic from the TreeDetection, w
 
 These Datasets vary in different qualities and instances there are roof-pv, water-pv, and ground-mounted-pv. Together with a bit of filtering we have 22.407 images with 71043 training instances and 8622 test instances.
 
-Evaluating the training we can see the precision and recieve the results as:
-| AP      | AP50    | AP75     |
-| :---    |   :---  |     :--- |
-| 63.3    | 84.4    | 74.0     |
+Evaluating the training we can see the precision and receive the results as:
+
+| AP   | AP50 | AP75 |
+| :--- | :--- | :--- |
+| 63.3 | 84.4 | 74.0 |
 
 applying inference to the trained model we get the following samples:
 <div style="text-align:center">
     <a>
-        <img src="/images/GeoDetection/solar_images_good_1.png" alt="Good Sample of Rooftop areas (1)" style="width:70%;height:70%"> <br>
-        <img src="/images/GeoDetection/solar_images_good_2.png" alt="Good Sample of Rooftop areas (2)" style="width:70%;height:70%"> <br>
+        <img src="/images/GeoDetection/solar_images_good_1.png" alt="Good Sample of Rooftop areas (1)" style="width:70%;height:70%">  <br><br>
+        <img src="/images/GeoDetection/solar_images_good_2.png" alt="Good Sample of Rooftop areas (2)" style="width:70%;height:70%">  <br><br>
         <img src="/images/GeoDetection/solar_images_good_3.png" alt="Good Sample of Rooftop areas (3)" style="width:70%;height:70%">
     </a>
     <br>
@@ -44,8 +45,8 @@ applying inference to the trained model we get the following samples:
 
 <div style="text-align:center">
     <a>
-        <img src="/images/GeoDetection/solar_images_worse_1.png" alt="Bad samples of prediction at a raliway station (1)" style="width:70%;height:70%"> <br>
-        <img src="/images/GeoDetection/solar_images_worse_2.png" alt="Bad samples of prediction at a parking place" style="width:70%;height:70%"> <br>
+        <img src="/images/GeoDetection/solar_images_worse_1.png" alt="Bad samples of prediction at a raliway station (1)" style="width:70%;height:70%">  <br><br>
+        <img src="/images/GeoDetection/solar_images_worse_2.png" alt="Bad samples of prediction at a parking place" style="width:70%;height:70%">  <br><br>
         <img src="/images/GeoDetection/solar_images_worse_3.png" alt="Bad predictions at a roof windows" style="width:70%;height:70%">
     </a>
     <br>
@@ -75,11 +76,13 @@ Then we manually annotate each tile, resulting in 26.398 geometries and an avera
     </a>
 </div>
 In order to efficiently capture solar parks with large panels we have a subtiling size of 50m and 70m buffer in each direction, this helps us to generate huge overlaps that can later be easily filtered and merged.
-We can then train/finetune the models  using tensorflow we can see this precision curves:
-|              | AP [50:95]   | AP50        |
-|-----------   | ----------- | ----------- |
-|Bounding Boxes| ![Training Average Bounding Box Precision](images\GeoDetection\solar_bbox_AP.svg)      | ![Training Average Bounding Box Precision](images\GeoDetection\solar_bbox_AP50.svg)       |
-|Segmentation  | ![Training Average Segementation Precision](images\GeoDetection\solar_segm_AP.svg)      | ![Training Average Bounding Box Precision](images\GeoDetection\solar_segm_AP50.svg)        |
+We can then train/finetune the models using TensorFlow. We can see these precision curves:
+
+|              | AP [50:95] | AP50 |
+|--------------|------------|------|
+| Bounding Boxes | ![Training Average Bounding Box Precision](images/GeoDetection/solar_bbox_AP.svg) | ![Training Average Bounding Box Precision](images/GeoDetection/solar_bbox_AP50.svg) |
+| Segmentation  | ![Training Average Segmentation Precision](images/GeoDetection/solar_segm_AP.svg) | ![Training Average Segmentation Precision](images/GeoDetection/solar_segm_AP50.svg) |
+
 
 These evaluations are notably worse than in pretraining, this is not because the models gets worse, but because our data is a lot more fine grained and complicated, more similar to real life conditions.
 
@@ -106,14 +109,14 @@ Some examples of different distances in the annotations are:
     <a>
         <img src="/images/GeoDetection/solar_annotation_example_1.png" alt="Annotation of solar rows" style="width:45%;height:45%"> 
         <img src="/images/GeoDetection/solar_annotation_example_2.png" alt="Annotations of continous solar panel rows" style="width:45%;height:45%"> 
-    </a> </br>
+    </a> <br><br>
     <a>
         <img src="/images/GeoDetection/solar_annotation_example_3.png" alt="Separate annotations at a flat roof" style="width:45%;height:45%"> 
         <img src="/images/GeoDetection/solar_annotation_example_4.png" alt="Continous annotations at a flat roof" style="width:45%;height:45%"> 
-    </a> </br>
+    </a>  <br><br>
     <a>
         <img src="/images/GeoDetection/solar_annotation_example_5.png" alt="Very fine grained annotation at a float roof" style="width:45%;height:45%"> 
-    </a> </br>
+    </a>  <br><br>
     <i>Samples of different different annotations in the training data with complicated file annotations.</i>
 </div>
 
@@ -131,14 +134,14 @@ We can compare the properties of predicted and annotated Geometries, to gain ins
     <a>
         <img src="/images/GeoDetection/compass_annotated.png" alt="Directions of our solar panels of our annotations." style="width:45%;height:45%"> 
         <img src="/images/GeoDetection/compass_predicted.png" alt="Directions of our solar panels of our predictions." style="width:45%;height:45%"> 
-    </a> </br>
+    </a>  <br><br>
     <a>
         <img src="/images/GeoDetection/scatter_area_slope.png" alt="Scatterplot of Area vs. Slope in our data" style="width:45%;height:45%"> 
         <img src="/images/GeoDetection/scatter_confidence_rectangularity.png" alt="Scatterplot of Confidence vs. Rectangularity in our data" style="width:45%;height:45%"> 
-    </a> </br>
+    </a>  <br><br>
     <a>
         <img src="/images/GeoDetection/scatter_slope_orientation.png" alt="Scatterplot of Slope vs. Orientation in our data" style="width:45%;height:45%"> 
-    </a> </br>
+    </a> <br>
 </div>
 
 ## Results 
@@ -148,17 +151,17 @@ Since we do not provide an explicit test split in the dataset we only provide qu
 We have a few several different samples as a short showcase, you are always encouraged to make your own to try it! 
 <div style="text-align:center">
     <a>
-        <img src="/images/GeoDetection/solar_solar_hill.png" alt="Sample of Solar Hill in Böblingen, typically panels that are orthogonal to tiles are recognized reliable." style="width:70%;height:70%"> 
-    </a> </br>
+        <img src="/images/GeoDetection/solar_solar_hill.png" alt="Sample of Solar Hill in Böblingen, typically panels that are orthogonal to tiles are recognized reliably." style="width:70%;height:70%"> 
+    </a> <br><br>
     <a>
         <img src="/images/GeoDetection/solar_suburban.png" alt="Sample of village area in Weil der Stadt." style="width:70%;height:70%"> 
-    </a> </br>
+    </a> <br><br>
     <a>
         <img src="/images/GeoDetection/solar_suburban_2.png" alt="Sample of village area in Weil der Stadt. (2)" style="width:70%;height:70%"> 
-    </a> </br>
+    </a> <br><br>
     <a>
         <img src="/images/GeoDetection/solar_stuttgart.png" alt="Sample in city area in Stuttgart downtown." style="width:70%;height:70%"> 
-    </a> </br>
+    </a> <br><br>
 </div>
 The predictions capture the majority of solar panel structures across different environments, from rural solar farms to dense urban and suburban rooftops. In the solar farm, the model delineates panel rows well but tends to fragment continuous structures into multiple smaller polygons. In urban and suburban areas, most rooftop panels are detected, yet there are occasional false positives and missing detections, especially on smaller or shaded installations.
 

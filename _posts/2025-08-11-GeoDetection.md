@@ -121,8 +121,8 @@ At this point we landed on a self-supervised pretraining task, that is given by 
 
 <div style="text-align:center">
     <a>
-        <img src="/images/GeoDetection/nDSM_data.png" alt="Single nDSM-Image" style="width:70%;height:70%"> <br>
-        <img src="/images/GeoDetection/nDSM_data_polygons.png" alt="Single nDSM-Image with Voronoi polygons" style="width:70%;height:70%"> <br>
+        <img src="/images/GeoDetection/nDSM_data.png" alt="Single nDSM-Image" style="width:70%;height:70%">  <br><br>
+        <img src="/images/GeoDetection/nDSM_data_polygons.png" alt="Single nDSM-Image with Voronoi polygons" style="width:70%;height:70%">  <br><br>
         <img src="/images/GeoDetection/nDSM_data_rgb.png" alt="Extracted Polygons overlayed to nDSM Image" style="width:70%;height:70%">
     </a>
     <br>
@@ -139,9 +139,9 @@ We then use this mechanism as **autolabels** to pretrain a ResNet model in the M
 Below you can see an illustration of the results:
 <div style="text-align:center">
     <a>
-        <img src="/images/GeoDetection/example_pretrain_1.png" alt="Inference using finetuned Model in Stuttgart (1)" style="width:70%;height:70%"> <br>
-        <img src="/images/GeoDetection/example_pretrain_2.png" alt="Inference using finetuned Model in Stuttgart (2)" style="width:70%;height:70%"> <br>
-        <img src="/images/GeoDetection/example_pretrain_3.png" alt="Inference using finetuned Model at University Stuttgart" style="width:70%;height:70%"> <br>
+        <img src="/images/GeoDetection/example_pretrain_1.png" alt="Inference using finetuned Model in Stuttgart (1)" style="width:70%;height:70%">  <br><br>
+        <img src="/images/GeoDetection/example_pretrain_2.png" alt="Inference using finetuned Model in Stuttgart (2)" style="width:70%;height:70%">  <br><br>
+        <img src="/images/GeoDetection/example_pretrain_3.png" alt="Inference using finetuned Model at University Stuttgart" style="width:70%;height:70%">  <br><br>
         <img src="/images/GeoDetection/example_pretrain_4.png" alt="Inference using pretrained Model at University Stuttgart" style="width:70%;height:70%">
     </a>
     <br>
@@ -175,8 +175,8 @@ This allows us to approximate roughly 1 square kilometer in a minute if parallel
 There are several methods to evaluate a model, we start by looking at metrics, for this we annotate 3.25 square kilometers of different regions. Especially interesting here are the following parts:
 <div style="text-align:center">
     <a>
-        <img src="/images/GeoDetection/models.png" alt="Comparison of the three models we have trained (pretrained forest model, finetuned urban model, and combined model)" style="width:70%;height:70%"> <br>
-        <img src="/images/GeoDetection/models_ablation.png" alt="Ablation of different measures" style="width:70%;height:70%"> <br>
+        <img src="/images/GeoDetection/models.png" alt="Comparison of the three models we have trained (pretrained forest model, finetuned urban model, and combined model)" style="width:70%;height:70%">  <br><br>
+        <img src="/images/GeoDetection/models_ablation.png" alt="Ablation of different measures" style="width:70%;height:70%">  <br><br>
         <img src="/images/GeoDetection/models_iou.png" alt="IoU Comparison" style="width:70%;height:70%">
     </a>
     <br>
@@ -187,9 +187,9 @@ As you can see while the pretrained model natively performs worst, it is respons
 Besides metrics it is always important to take a look at the the current performance directly, I you want to use it I encourage you to take an image from the environment, you want to use it and try it for yourself. The code and installation instructions are available [here](https://github.com/Jonetz/TreeDetection). If you are just interested in the performance, you can look at the images below:
 <div style="text-align:center">
     <a>
-        <img src="/images/GeoDetection/example_stadt.png" alt="Example of the results in Stuttgart downtown" style="width:70%;height:70%"> <br>
-        <img src="/images/GeoDetection/example_wdst.png" alt="AExample of the results in a village (1)" style="width:70%;height:70%"> <br>
-        <img src="/images/GeoDetection/example_wdst_2.png" alt="Example of the results in a village (2)" style="width:70%;height:70%"> <br>
+        <img src="/images/GeoDetection/example_stadt.png" alt="Example of the results in Stuttgart downtown" style="width:70%;height:70%">  <br><br>
+        <img src="/images/GeoDetection/example_wdst.png" alt="AExample of the results in a village (1)" style="width:70%;height:70%">  <br><br>
+        <img src="/images/GeoDetection/example_wdst_2.png" alt="Example of the results in a village (2)" style="width:70%;height:70%">  <br><br>
         <img src="/images/GeoDetection/example_wdst_3.png" alt="Example of the results in a village (3)" style="width:70%;height:70%">
     </a>
     <br>
