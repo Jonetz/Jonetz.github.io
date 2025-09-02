@@ -78,15 +78,27 @@ Then we manually annotate each tile, resulting in 26.398 geometries and an avera
 In order to efficiently capture solar parks with large panels we have a subtiling size of 50m and 70m buffer in each direction, this helps us to generate huge overlaps that can later be easily filtered and merged.
 We can then train/finetune the models using TensorFlow. We can see these precision curves:
 
-**Bounding Boxes**  
-<img src="images/GeoDetection/solar_bbox_AP.svg" width="400">  
-<img src="images/GeoDetection/solar_bbox_AP50.svg" width="400">  
-
-**Segmentation**  
-<img src="images/GeoDetection/solar_segm_AP.svg" width="400">  
-<img src="images/GeoDetection/solar_segm_AP50.svg" width="400">  
-
-
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>AP [50:95]</th>
+      <th>AP50</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bounding Boxes</td>
+      <td><img src="images/GeoDetection/solar_bbox_AP.png" alt="Training Average Bounding Box Precision" style="width:300px;"></td>
+      <td><img src="images/GeoDetection/solar_bbox_AP50.png" alt="Training Average Bounding Box Precision" style="width:300px;"></td>
+    </tr>
+    <tr>
+      <td>Segmentation</td>
+      <td><img src="images/GeoDetection/solar_segm_AP.png" alt="Training Average Segmentation Precision" style="width:300px;"></td>
+      <td><img src="images/GeoDetection/solar_segm_AP50.png" alt="Training Average Segmentation Precision" style="width:300px;"></td>
+    </tr>
+  </tbody>
+</table>
 
 These evaluations are notably worse than in pretraining, this is not because the models gets worse, but because our data is a lot more fine grained and complicated, more similar to real life conditions.
 
