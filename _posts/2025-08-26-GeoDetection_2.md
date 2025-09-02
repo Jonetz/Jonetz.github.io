@@ -1,9 +1,8 @@
 ---
-title: 'Challenges & Methods in Detecting Objects from UAV-Data (2)'
+title: 'Detecting Objects from aerial images (2)'
 date: 2025-08-11
 permalink: /posts/2025/08/Detecting-Objects/
 tags:
-  - Environmental Science
   - Solar
   - Detection
   - Segmentation
@@ -56,13 +55,33 @@ applying inference to the trained model we get the following samples:
 So we can see the Precision is okay, but on a landwide scale there are several problems, especially since, many complicated structures especially in big cities are present in the real life inference data, that are not represented adequately in the training data. This leads to high confidence false positives. In order to mitigate this we have to further annotate real data. 
 
 ## Finetuning with our own data sets
+We sampled different images as 1x1 km tiles using [the OpenStreetMap Data](https://wiki.openstreetmap.org/wiki/Downloading_data) with parameters as follows:
+```
+solar_tags = {
+    "plant:source": "solar",
+    "plant:method": "photovoltaic",
+    "generator:source": "solar",
+    "generator:method": "photovoltaic",
+    "generator:type": "solar_photovoltaic_panel"
+}
+place_name = "Baden-Württemberg, Deutschland"
+```
+So we firstly extract everything with one of the tags and then we assign them to the special Tiles, this is because the annotations are very crude, some use single panels, some use the property lines or visual segmentations. Then we sample from these Tiles in 70 % single panels such as rooftop PV or single PV panels and 30 % from solar parks.
 
-" TODO "
-- Explain Sampling using OSM
-- 70 Rooftop & General, 30 Solar parks
-- Show Images: 1) Distribution of panels, 2) Sampels with example distributions 3) Tensorflow curves
-- Explain: why are benchmarks here worse? -> Finer annotations, more divers samples
-- Properties of annotations: 1) Postprocess data and visualize properties.
+Then we manually annotate each tile, resulting in 26.398 geometries and an average of 126.91 geometries of tiles. You can see the distribution of panels below:
+<div style="text-align:center">
+    <a>
+        <img src="/images/GeoDetection/solar_distribution.png" alt="Distribution of sampled Tiles across Baden-Würtemberg" style="width:70%;height:70%"> 
+    </a>
+</div>
+In order to efficiently capture solar parks with large panels we have a subtiling size of 50m and 70m buffer in each direction, this helps us to generate huge overlaps that can later be easily filtered and merged.
+We can then train/finetune the models  using tensorflow we can see this precision curves:
+|              | AP [50:95]   | AP50        |
+|-----------   | ----------- | ----------- |
+|Bounding Boxes| ![Training Average Bounding Box Precision](images\GeoDetection\solar_bbox_AP.svg)      | ![Training Average Bounding Box Precision](images\GeoDetection\solar_bbox_AP50.svg)       |
+|Segmentation  | ![Training Average Segementation Precision](images\GeoDetection\solar_segm_AP.svg)      | ![Training Average Bounding Box Precision](images\GeoDetection\solar_segm_AP50.svg)        |
+
+These evaluations are notably worse than in pretraining, this is not because the models gets worse, but because our data is a lot more fine grained and complicated, more similar to real life conditions.
 
 ## Adding features to enrich the data
 Again, as in TreeDetection, we enrich each prediction with a lot of data, that allows for efficient filtering of wrong classifications and analysis of the predicted data:
@@ -82,7 +101,21 @@ Obviously if several panels are recognized together as one prediction, orientati
 
 Unfortunately, again the hierachic recognition is one of the main problems to consider in this case, since here again we have a lot of instances, that are clearly separable in some cases and less in others. So for instance in solar parks, the panels are sometimes spread out to avoid shadows, sometimes they are close by, when space is costly and sometimes there is no gap between them. The same holds for rooftop solar on large buildings. 
 
-" TODO Example for different distances between these samples "
+Some examples of different distances in the annotations are:
+<div style="text-align:center">
+    <a>
+        <img src="/images/GeoDetection/solar_annotation_example_1.png" alt="Annotation of solar rows" style="width:45%;height:45%"> 
+        <img src="/images/GeoDetection/solar_annotation_example_2.png" alt="Annotations of continous solar panel rows" style="width:45%;height:45%"> 
+    </a> </br>
+    <a>
+        <img src="/images/GeoDetection/solar_annotation_example_3.png" alt="Separate annotations at a flat roof" style="width:45%;height:45%"> 
+        <img src="/images/GeoDetection/solar_annotation_example_4.png" alt="Continous annotations at a flat roof" style="width:45%;height:45%"> 
+    </a> </br>
+    <a>
+        <img src="/images/GeoDetection/solar_annotation_example_5.png" alt="Very fine grained annotation at a float roof" style="width:45%;height:45%"> 
+    </a> </br>
+    <i>Samples of different different annotations in the training data with complicated file annotations.</i>
+</div>
 
 This is fixed with our selection logic, together with other problems, such as detection of containers and cars that are visually very similar, but differ in environment, and small carports that are often detected. The postprocessing steps filter as follows:
 1. Eliminate based on height and area thresholds.
@@ -93,10 +126,41 @@ This is fixed with our selection logic, together with other problems, such as de
 
 By frequently combining building and area information we ensure a robust inference of both main groups, solar parks as well as rooftop pv.
 
-## Results 
+We can compare the properties of predicted and annotated Geometries, to gain insight in the ways of our panels and get a high level overview:
+<div style="text-align:center">
+    <a>
+        <img src="/images/GeoDetection/compass_annotated.png" alt="Directions of our solar panels of our annotations." style="width:45%;height:45%"> 
+        <img src="/images/GeoDetection/compass_predicted.png" alt="Directions of our solar panels of our predictions." style="width:45%;height:45%"> 
+    </a> </br>
+    <a>
+        <img src="/images/GeoDetection/scatter_area_slope.png" alt="Scatterplot of Area vs. Slope in our data" style="width:45%;height:45%"> 
+        <img src="/images/GeoDetection/scatter_confidence_rectangularity.png" alt="Scatterplot of Confidence vs. Rectangularity in our data" style="width:45%;height:45%"> 
+    </a> </br>
+    <a>
+        <img src="/images/GeoDetection/scatter_slope_orientation.png" alt="Scatterplot of Slope vs. Orientation in our data" style="width:45%;height:45%"> 
+    </a> </br>
+</div>
 
-" TODO General Evaluation "
-- Properties of predictions
-- Example Images
-- Short description on weaknesses and limitations
-- signoff
+## Results 
+Since we do not provide an explicit test split in the dataset we only provide qualititative results as well as insights in the properties. In general we can see that the predictions on rooftop PV are qualitatively very accurate, the recall is high, but sometimes there are still some wrong predictions.
+
+### Image Samples
+We have a few several different samples as a short showcase, you are always encouraged to make your own to try it! 
+<div style="text-align:center">
+    <a>
+        <img src="/images/GeoDetection/solar_solar_hill.png" alt="Sample of Solar Hill in Böblingen, typically panels that are orthogonal to tiles are recognized reliable." style="width:70%;height:70%"> 
+    </a> </br>
+    <a>
+        <img src="/images/GeoDetection/solar_suburban.png" alt="Sample of village area in Weil der Stadt." style="width:70%;height:70%"> 
+    </a> </br>
+    <a>
+        <img src="/images/GeoDetection/solar_suburban_2.png" alt="Sample of village area in Weil der Stadt. (2)" style="width:70%;height:70%"> 
+    </a> </br>
+    <a>
+        <img src="/images/GeoDetection/solar_stuttgart.png" alt="Sample in city area in Stuttgart downtown." style="width:70%;height:70%"> 
+    </a> </br>
+</div>
+The predictions capture the majority of solar panel structures across different environments, from rural solar farms to dense urban and suburban rooftops. In the solar farm, the model delineates panel rows well but tends to fragment continuous structures into multiple smaller polygons. In urban and suburban areas, most rooftop panels are detected, yet there are occasional false positives and missing detections, especially on smaller or shaded installations.
+
+### Weaknesses & Limitations
+The main weaknesses of the predictions are inconsistent segmentation quality and sensitivity to context. Large, continuous panel areas are often broken into many smaller polygons, while in urban and suburban settings, small or partially shaded panels are sometimes missed entirely. False positives also occur on dark roof patches or non-panel structures, highlighting limited robustness to visual variability. These issues suggest the model struggles with both fine-grained precision and generalization across different environments.

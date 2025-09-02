@@ -1,5 +1,5 @@
 ---
-title: 'Challenges & Methods in Detecting Objects from UAV-Data (1)'
+title: 'Detecting Objects from aerial images (1)'
 date: 2025-08-11
 permalink: /posts/2025/08/Detecting-Objects/
 tags:
