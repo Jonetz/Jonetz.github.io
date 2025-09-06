@@ -1,7 +1,7 @@
 ---
 title: 'Detecting Objects from aerial images (1)'
 date: 2025-08-11
-permalink: /posts/2025/08/Detecting-Objects/
+permalink: /posts/2025/08/Detecting-Objects-1/
 tags:
   - Environmental Science
   - Detection

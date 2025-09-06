@@ -1,7 +1,7 @@
 ---
 title: 'Detecting Objects from aerial images (2)'
 date: 2025-08-11
-permalink: /posts/2025/08/Detecting-Objects/
+permalink: /posts/2025/08/Detecting-Objects-2/
 tags:
   - Solar
   - Detection
