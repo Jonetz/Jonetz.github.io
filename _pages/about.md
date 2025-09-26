@@ -7,15 +7,6 @@ redirect_from:
   - /about/
   - /about.html
 ---
-
-permalink: /
-title: "Journeys in AI & Beyond"
-excerpt: "Thoughts, projects, and reflections from my work and life"
-author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
----
 Hi, I’m Jonas Geiselhart, a Software Engineer for Artificial Intelligence, living in Baden-Württemberg.  
 
 This blog is a space where I share my projects, ideas, and reflections—both professional and personal. While much of my work involves machine learning, deep learning, and transfer learning, I also like exploring the broader context of technology, everyday life, and personal experiences. Each project I post about usually has a unique angle, a lesson learned, or an aspect I found particularly interesting.  
