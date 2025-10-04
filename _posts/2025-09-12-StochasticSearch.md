@@ -10,9 +10,6 @@ tags:
   - Markov Chain
   - Monte Carlo
 --- 
-In this post I explore how we can optimize the search of interesting initial configurations for Conways Game of Life using stochastic search, such that specific properties are promoted within the search. 
-
-# Stochastic Search using MCMC in the Game of Life
 In this article I will look at Conway's Game of Life and introduce a new way to find interesting patterns, such as methuselahs, diehards or oscillators. Interestingly the specific goal is less interesting and the software can be extended easily in order to introduce a new goal. 
 
 My aproach: Instead of looking simply at random boards, I start with random initial boards and try to permute promising candidates sucessively, while relatively bad boards get substituted more frequently. In theory this helps leveraging the knowledge of candidates that are not great, but have given potential. In the next section I briefly explain the Game of Life and the goals of the algorithm.
