@@ -170,9 +170,26 @@ With this we can search patterns sampling from already existing patterns that ar
 
 Some long patterns found using the chains above include:
 
-![Pattern 1](/images/GOL/gifs/CombinedScorer_step200_score91_20250922-145704.gif)
-![Pattern 2](/images/GOL/gifs/CombinedScorer_step527_score130_20250922-173055.gif)
-![Pattern 3](/images/GOL/gifs/CombinedScorer_step618_score358_20250913-212255.gif)
-![Pattern 4](/images/GOL/gifs/CombinedScorer_step724_score101_20250922-183130.gif)
-![Pattern 5](/images/GOL/gifs/MethuselahScorer_step241_score301_20251003-233043.gif)
-![Pattern 6](/images/GOL/gifs/MethuselahScorer_step249_score353_20251003-184647.gif)
+<p align="center">
+  <img src="/images/GOL/gifs/CombinedScorer_step200_score91_20250922-145704.gif" alt="Pattern 1" width="60%">
+</p>
+
+<p align="center">
+  <img src="/images/GOL/gifs/CombinedScorer_step527_score130_20250922-173055.gif" alt="Pattern 2" width="60%">
+</p>
+
+<p align="center">
+  <img src="/images/GOL/gifs/CombinedScorer_step618_score358_20250913-212255.gif" alt="Pattern 3" width="60%">
+</p>
+
+<p align="center">
+  <img src="/images/GOL/gifs/CombinedScorer_step724_score101_20250922-183130.gif" alt="Pattern 4" width="60%">
+</p>
+
+<p align="center">
+  <img src="/images/GOL/gifs/MethuselahScorer_step241_score301_20251003-233043.gif" alt="Pattern 5" width="60%">
+</p>
+
+<p align="center">
+  <img src="/images/GOL/gifs/MethuselahScorer_step249_score353_20251003-184647.gif" alt="Pattern 6" width="60%">
+</p>
