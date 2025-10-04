@@ -143,33 +143,22 @@ Below you can see a simple script to that genereates 4 Independent Chains with e
 
 In the example above, we initialize multiple chains of boards, each exploring the search space differently based on the proposals and schedulers assigned. The use of low- and high-entropy proposals ensures both local refinements and global exploration, while the Metropolis-Hastings acceptance rule allows the system to probabilistically favor boards with better scores.
 Scorers play a crucial role in guiding the search. By combining metrics like chaos, methuselah longevity, and change rate, we define a smooth heuristic that nudges the chains toward configurations likely to produce interesting emergent behavior. Over time, the temperature schedule shifts the search from broad exploration to local exploitation. 
-<div style="display:flex; justify-content:center; gap:5%; margin:auto; text-align:center;">
-  <a>
-    <img src="/images/GOL/alive_comparison.png" 
-         alt="Comparison of Alive Cells at the end of the run (excluding oscillators)." 
-         style="width:45%; height:auto;">
-  </a>
-  <a>
-    <img src="/images/GOL/trajectories comparison.png" 
-         alt="Comparison of length before stabilizing." 
-         style="width:45%; height:auto;">
-  </a>
+<div style="display:flex; justify-content:center; gap:5%; flex-wrap: wrap; text-align:center;">
+  <img src="/images/GOL/alive_comparison.png" 
+       alt="Comparison of Alive Cells at the end of the run (excluding oscillators)." 
+       style="max-width:48%; height:auto;">
+  <img src="/images/GOL/trajectories comparison.png" 
+       alt="Comparison of length before stabilizing." 
+       style="max-width:48%; height:auto;">
   <br>
     <i>Visualizing results demonstrates the effectiveness of this approach. Comparisons against random initial boards show that MCMC-driven searches yield more alive cells, longer-lived structures, and higher-quality emergent patterns. Stepwise scoring plots illustrate gradual improvement over time, validating the combined effect of proposals, scorers, and schedulers.</i>
 </div>
 Also we can see the improvements over time if we plot each chain, notably this is only the combined score not the length to stabilizing: 
-<div style="display:flex; justify-content:center; gap:5%; margin:auto; text-align:center;">
-  <a>
+<div style="display:flex; justify-content:center; gap:5%; flex-wrap: wrap; text-align:center;">
     <img src="/images/GOL/Step_avg_score.png" 
-         alt="TODO" 
-         style="width:45%; height:auto;">
-  </a>
-  <a>
+       style="max-width:48%; height:auto;">
     <img src="/images/GOL/Step_max_score.png" 
-         alt="TODO" 
-         style="width:45%; height:auto;">
-  </a>
-
+       style="max-width:48%; height:auto;">
   <br>
   <i>Stepwise evolution of the combined score for different MCMC chains over time. The legend shows the chain configurations: Standard 2500 Steps (orange), Low-Entropy 500 (dark blue), Low-Entropy 200 (red), Standard 2500_2 (bright blue), Standard 200 (pink), Plateau 250 (green), Oscillating 250 (grey). Note that these scores reflect the combined scoring function, not the time to stabilization.</i>
 </div>
@@ -181,16 +170,9 @@ With this we can search patterns sampling from already existing patterns that ar
 
 Some long patterns found using the chains above include:
 
-![Pattern 1](images\GOL\gifs\CombinedScorer_step200_score91_20250922-145704.gif)
-
-![Pattern 2](images\GOL\gifs\CombinedScorer_step527_score130_20250922-173055.gif)
-
-![Pattern 3](images\GOL\gifs\CombinedScorer_step618_score358_20250913-212255.gif)
-
-![Pattern 4](images\GOL\gifs\CombinedScorer_step724_score101_20250922-183130.gif)
-
-![Pattern 5](images\GOL\gifs\MethuselahScorer_step241_score301_20251003-233043.gif)
-
-![Pattern 6](images\GOL\gifs\MethuselahScorer_step249_score353_20251003-184647.gif)
-
-
+![Pattern 1](/images/GOL/gifs/CombinedScorer_step200_score91_20250922-145704.gif)
+![Pattern 2](/images/GOL/gifs/CombinedScorer_step527_score130_20250922-173055.gif)
+![Pattern 3](/images/GOL/gifs/CombinedScorer_step618_score358_20250913-212255.gif)
+![Pattern 4](/images/GOL/gifs/CombinedScorer_step724_score101_20250922-183130.gif)
+![Pattern 5](/images/GOL/gifs/MethuselahScorer_step241_score301_20251003-233043.gif)
+![Pattern 6](/images/GOL/gifs/MethuselahScorer_step249_score353_20251003-184647.gif)
