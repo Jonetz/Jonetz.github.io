@@ -1,17 +1,9 @@
 ---
 title: "From Forest to Urban: Data Efficient Tree Segmentation with Self-Supervised Pretraining on Height-Based Voronoi Maps"
 subtitle: "BMVC 2025 Workshop Proceedings"
-author:
-  - name: "Jonas Geiselhart"
-    affiliation: "University of Stuttgart"
-  - name: "Luca Reichmann"
-    affiliation: "University of Stuttgart"
-  - name: "Alina Roitberg"
-    affiliation: "University of Hildesheim"
 date: 2025-11-01
 tags: [BMVC 2025, tree segmentation, self-supervised learning, Voronoi maps]
 categories: papers
-cover: /assets/images/forest-to-urban-cover.jpg
 ---
 
 **Abstract:**  
