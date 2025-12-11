@@ -8,6 +8,9 @@ tags:
   - Uni
   - DeepLearning
   - Transformer
+toc: true
+toc_label: "Review"
+toc_icon: "atom"
 ---
 
 I did not do any research on this topic on my own, but only literature review, there is no content directly from me but only summary. If not directly cited the information is either considered common knowledge or from my references at the end, our main source that is reviewed is [1].

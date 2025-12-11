@@ -2,6 +2,9 @@
 title: 'Detecting Objects from Aerial Images (1)'
 date: 2025-08-11
 permalink: /posts/2025/08/Detecting-Objects-1/
+toc: true
+toc_label: "TreeDetection"
+toc_icon: "tree"
 tags:
   - Environmental Science
   - Detection

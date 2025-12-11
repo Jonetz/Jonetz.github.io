@@ -2,6 +2,9 @@
 title: 'Detecting Objects from Aerial Images (2)'
 date: 2025-08-11
 permalink: /posts/2025/08/Detecting-Objects-2/
+toc: true
+toc_label: "Solar Detection"
+toc_icon: "solar-panel"
 tags:
   - Solar
   - Detection

@@ -2,6 +2,9 @@
 title: 'Stochastic Search using MCMC in the Game of Life'
 date: 2025-10-04
 permalink: /posts/2025/09/Stochastic-Search/
+toc: true
+toc_label: "Stochastic Search"
+toc_icon: "computer"
 tags:
   - Markov Chain Monte Carlo
   - Stochastic Search
