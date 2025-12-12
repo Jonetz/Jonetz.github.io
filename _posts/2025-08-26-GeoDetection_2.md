@@ -2,15 +2,13 @@
 title: 'Detecting Objects from Aerial Images (2)'
 date: 2025-08-11
 permalink: /posts/2025/08/Detecting-Objects-2/
-toc: true
-toc_label: "Solar Detection"
-toc_icon: "solar-panel"
 tags:
   - Solar
   - Detection
   - Segmentation
   - Uni
   - DeepLearning
+toc: true
 --- 
 
 This article is about a project I did at the [ISP](https://www.ki.uni-stuttgart.de/departments/isp/) at the University of Stuttgart. 

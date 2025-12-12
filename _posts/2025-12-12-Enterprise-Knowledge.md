@@ -8,10 +8,11 @@ tags:
   - Non-Technical
   - Memory
   - RAG
+toc: true
 ---
 This article is part of a larger series of introductory AI tutorials for non-techies, written in German and auto-translated.
 
-# 1\. Introduction
+# 1. Introduction
 
 Large language models such as ChatGPT, Gemini and DeepSeek have grown rapidly in recent years and completely changed the way we work with text. Companies have also quickly realised that they need to operate such models themselves in order to protect data. That is why ways have been developed to host LLMs privately and provide them securely within protected environments. This ensures that no sensitive data is leaked to the outside world. Internal information remains protected and documents, texts or images can be used without having to worry about data leakage.
 
@@ -23,13 +24,13 @@ In the first step, we look at how models can be directly adapted to permanently 
 
 The article deliberately uses ‘handwaving’, i.e. without many technical details, in order to convey a basic understanding. The explanations are intended to make the ideas understandable without being completely mathematically correct. Please note that this article was written in November 2025 and many of the technologies described are evolving rapidly.
 
-# 2\. Writing Knowledge into the Model
+# 2. Writing Knowledge into the Model
 
 The most direct way to equip a language model with internal knowledge is to store this knowledge directly in the model itself. This is the most elegant option, but also the most demanding, as training neural networks is extremely computationally intensive and involves complex mathematical processes.
 
 In this chapter, we first explain what training involves for large models, then we look at how existing models can be improved and adapted to specific domains, and finally we present methods that make training more efficient without compromising accuracy too much.
 
-## 2.1. Pre-Training – Yhy only the big Players can do it
+## Pre-Training – Why only the big Players can do it
 
 Large language models consist of neural networks with billions to trillions of parameters. Pretraining requires enormous computing power: often hundreds of GPUs or TPUs over many weeks. Only a few institutions in Germany have the necessary infrastructure, such as AI-Fabrics in Stuttgart and Jülich. In addition to computing power, the database is also an obstacle. Large models are trained with gigantic datasets such as Common Crawl or Books1/Books2, whose legal status in Europe is still under discussion. Just recently, the first landmark ruling on the use of song lyrics in language models (GEMA vs. OpenAI) was handed down, but it is not yet legally binding.
 
@@ -54,7 +55,7 @@ Note: Pre-training is probabilistic. This means that after training, the model u
 
 It is also important to mention that scaling LLMs to a smaller model that we could train ourselves would not work better than using an existing LLM, unless special methods in the field of distillation are applied. The AI boom was triggered by the discovery of properties within [LLM training scaling](https://openai.com/index/how-ai-training-scales/), and currently, good compact models are still an open problem.
 
-## 2.2. Fine-Tuning – ‘baking in’ Domain Knowledge
+## Fine-Tuning – ‘baking in’ Domain Knowledge
 
 [Domain-specific fine-tuning](https://arxiv.org/pdf/2409.03444) is the final step in the training process of an LLM, during which alignment also takes place. While pre-training gives the model a general understanding of language – i.e. grammar (syntax) and meaning (semantics) – it does not yet know the exact facts of a particular subject area. For example, it does not know which laws apply in the financial sector, which internal guidelines are relevant, or what typical processes look like in a government agency.
 
@@ -62,7 +63,7 @@ During fine-tuning, the model is specifically trained on such specific content. 
 
 In summary: Fine-tuning is the step in which a model transforms from a general language understanding model into a specialised assistant. It stores domain-specific knowledge in its parameters, learns the rules of a subject area and can respond specifically to tasks and questions relevant to that area. At the same time, training remains resource-intensive and requires careful planning to ensure that the model learns in a stable and reliable manner.
 
-## 2.3. Parameter-Efficient Fine-Tuning (LoRA, Adapters)
+## Parameter-Efficient Fine-Tuning (LoRA, Adapters)
 
 A common idea is to make the fine-tuning of LLMs more efficient and resource-friendly without having to retrain the entire model. Two of the most practical methods are **Lower-Rank Adaptation of LLMs (LoRA)** and **Parameter-Efficient Training with Adapter Layers**. Both approaches have in common that not all parameters of a model are adjusted, but only the relevant ones. This significantly reduces memory and computing costs, while still allowing adaptation to specific knowledge.
 
@@ -85,14 +86,14 @@ Another method for **parameter-efficient fine-tuning** is the use of so-called [
     </a>
 </div>
 
-# 3\. Storing Knowledge alongside the Model (RAG)
+# 3. Storing Knowledge alongside the Model (RAG)
 
 In the previous chapter, we saw how knowledge can be built directly into a model. However, this method still has some limitations. Every time new information is added or existing data is updated, the model would have to be completely retrained – a very costly and time-consuming process. In addition, the training is probabilistic: the results can change slightly, which is why a new check is necessary after each adjustment.
 
 An elegant alternative is to store the knowledge **beside the model** and only provide it as context when needed. This approach is known as **retrieval-augmented generation (RAG)**. Unlike classic fine-tuning, the aim here is not to change the parameters of the model itself, but to provide the model with additional information that is retrieved when answering a question. You can think of it as a kind of ‘intelligent reference work’ available to the AI. The principle is simple and comparable to human behavior: when we don't know something, we look it up—in a book, a database, or online. In the same way, a RAG system can find relevant documents, facts, or data sets and provide them to the model as context. The model treats this information as part of the question and can generate accurate answers based on it. This allows models to remain flexible, utilize current knowledge, and significantly reduce the effort and cost of complete retraining. RAG thus combines the power of large language models with the timeliness and reliability of external information sources.
 
 
-## 3.1. Simple RAG – Get facts instead of Hallucinating
+## Simple RAG – Get facts instead of Hallucinating
 
 [RAG](https://jiraconfpr1.lzfd.stvbwl.net/confluence/arxiv.org/abs/2005.11401) was introduced in 2020 by Lewis et al. and has since been considered one of the simplest methods for automatically making non-public data usable for AI models. The basic idea is that a system not only accesses its internal knowledge, but also retrieves relevant documents or information in real time to provide more accurate and verifiable answers.
 
@@ -115,7 +116,7 @@ Nowadays, RAG is typically operated with a number of enhancements that increase 
 
 Another honorable mention is [Graph RAG](https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/), which allows you to display context using nodes in a graph. Graphs offer the possibility of being more flexible than linear documents or individual contexts; they are an incredibly powerful but currently very complex approach to making knowledge available. However, knowledge graphs are such a broad topic that we do not want to go into further detail here.  
 
-## 3.2. Agentic RAG – the Model plans its Research
+## Agentic RAG – the Model plans its Research
 
 [Agentic RAG](https://www.ibm.com/de-de/think/topics/agentic-rag) differs from the previous models particularly in terms of autonomy and self-image.  In an [overview](https://arxiv.org/pdf/2501.09136), Singh et al. presented four central behavior patterns that are characteristic of agentic systems:
 
@@ -128,7 +129,7 @@ Overall, it can be said that agents are extremely powerful and offer functionali
 
 A particularly important aspect is the **degree of autonomy** of the agents. It remains unclear what rights and scope of action should be granted to AI. Initial practical applications lie in the area of simple tasks such as ordering food, managing calendars, or taking notes during meetings. It is already possible to give smaller LLM agents limited permissions, such as accessing the calendar, automatically accompanying meetings with links, and creating summaries as “notetakers.”
 
-# 4\. Memory Systems
+# 4. Memory Systems
 
 Since LLMs use their entire knowledge base for every query, this is both expensive and not very up-to-date. Retrieval-augmented generation (RAG), on the other hand, searches for specific documents but does not independently create a coherent context. There is therefore still a need for a system that can independently derive context so that a language model can remember tasks, requirements, purposes, and goals. In this chapter, we look at an example of how memory could be natively integrated into language models in the future. Here, it is particularly important to focus on the basic ideas and building blocks without getting lost in technical details, as the solutions may change significantly before commercial release.
 
@@ -144,7 +145,7 @@ Episodic memory captures individual “episodes,” i.e., specific interactions.
 
 Procedural memory captures role understanding and action knowledge. It answers the question: “What do I do in this situation?” For example, it includes processes such as getting up, preparing breakfast, making coffee, or brushing your teeth. In LLMs, this knowledge is usually stored implicitly in the weights through training, allowing the model to apply similar action patterns in new situations.
 
-## 4.1. Memory Mechanisms - Titans Explained
+## Memory Mechanisms - Titans Explained
 
 In this section, we would like to present an example mechanism and break it down in detail to answer the question: How can you implement a memory that can store both facts and data from previous conversations and a comprehensive overview of company-wide documents? At the same time, the architectures in this area are not yet mature enough to be available as finished products. Nevertheless, an overview of new technologies can still be interesting—especially for readers who have a certain technical interest in this area.
 
@@ -215,7 +216,7 @@ This category includes information that is stored **across sessions**. This incl
 **Persistent memory**  
 Persistent memory mechanisms are stable and do not change automatically. These include **model weights**, which store basic behavior, rules such as grammar, basic knowledge, and style. **Persistent user profiles** also fall into this category if the information is not processed directly by the model. Finally, there are **system prompts**, i.e., unchangeable instructions or role definitions that are included in every request and determine the behavior of the model.
 
-# 5\. Long Context Windows
+# 5. Long Context Windows
 
 An LLM is always addressed with a **context window**. This contains, for example, information from the previous conversation, additional documents, or the system prompt. The goal is to expand this working window so that all relevant information can be provided at the same time. This is particularly useful when working with large documents and wanting to include all information in the processing. Large providers such as Google with Gemini or Alibaba with Qwen rely heavily on such large context windows.
 

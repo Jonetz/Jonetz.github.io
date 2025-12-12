@@ -2,9 +2,6 @@
 title: 'Stochastic Search using MCMC in the Game of Life'
 date: 2025-10-04
 permalink: /posts/2025/09/Stochastic-Search/
-toc: true
-toc_label: "Stochastic Search"
-toc_icon: "computer"
 tags:
   - Markov Chain Monte Carlo
   - Stochastic Search
@@ -12,6 +9,7 @@ tags:
   - Methuselah
   - Markov Chain
   - Monte Carlo
+toc: true
 --- 
 In this article I will look at Conway's Game of Life and introduce a new way to find interesting patterns, such as methuselahs, diehards or oscillators. Interestingly the specific goal is less interesting and the software can be extended easily in order to introduce a new goal. 
 

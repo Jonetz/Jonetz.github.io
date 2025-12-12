@@ -9,12 +9,13 @@ tags:
   - Graph
   - Non-Technical
   - Knowledge Graph
+toc: true
 ---
 This article introduces knowledge graphs – a technology that is significantly underrepresented in the media and is particularly known for its precision and explainability. The article remains at a user level throughout, offering the most accessible introduction to the topic possible. 
 
 This article is part of a larger series of introductory AI tutorials I wrote in german and is auto-translated.
 
-# 1\. Introduction and Motivation
+# 1. Introduction and Motivation
 While deep learning continues to gain prominence through hobbyhorses such as GenAI and reinforcement learning through robotics, a technology is developing in the background into a powerful tool for large companies and specialised domains: **knowledge graphs**. These structures are special because they are not explicitly based on machine learning, but can still be confidently classified as belonging to the field of artificial intelligence. As a result, knowledge graphs already form their own field in theory and research, one that even some AI scientists have never heard of. At the same time, they are used in many key domains as the backbone of knowledge management – whether in biology, medicine, aircraft construction, the military, the police or social media. This article attempts to close precisely this gap in representation. At the same time, it aims to serve as an outlook beyond the horizon and show that AI is not always just what the consumer sees. In contrast, many advances towards truly usable and rapidly accelerating AI algorithms are only mentioned as a side note or not at all in the media.
 
 What is an **ontology**?  
@@ -31,7 +32,7 @@ Today, the topic is particularly relevant due to simple data integration and exp
 
 The topic is becoming increasingly important because fast and comprehensive representations of data are becoming more and more crucial. In addition, knowledge graphs form a fundamental basis for important artificial intelligence algorithms. For example, Bayesian networks, recommender systems, graph-based retrieval-augmented generation, and graph neural networks are only possible thanks to knowledge graphs.
 
-# 2\. Technology, interoperability and queries
+# 2. Technology, interoperability and queries
 
 The idea of knowledge graphs was made famous by Tim Berners-Lee, the inventor of the internet. He proposed representing all information on the internet in the form of RDF – a definition language for knowledge graphs – and capturing everything as a formal model. Although this idea did not completely catch on, it gave rise to many concepts that are still useful today. This idea was called **Semantic Web** and is still a very influential concept today. It has been taken up by [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page), [Google](https://developers.google.com/knowledge-graph) and [DBpedia](https://dbpedia.org).What makes it special: Even though the Semantic Web has not yet become fully established, standards have been developed from it that are now used worldwide:
 
@@ -49,11 +50,11 @@ Individual huge open graphs describe the world in very concrete terms. However, 
 </div>
 
 
-## 2.1. Application example
+## Application example
 
 Our goal here is to create a small query to the WikiData query site about the novel ‘Around the World in 80 Days’:
 
-Dazu soll zunächst die Seite[http://query.wikidata.org](https://query.wikidata.org/#SELECT%20DISTINCT%20%3Fs%20%3FsLabel%20%3Fp%20%3FpLabel%20%3Fo%20%3FoLabel%20WHERE%20%7B%0A%20%20VALUES%20%3Fstart%20%7B%20wd%3AQ1219561%7D%0A%0A%20%20%7B%0A%20%20%20%20%3Fstart%20%3Fp%20%3Fo%20.%0A%20%20%20%20BIND%28%3Fstart%20AS%20%3Fs%29%0A%20%20%7D%0A%20%20UNION%0A%20%20%7B%0A%20%20%20%20%3Fs%20%3Fp%20%3Fstart%20.%0A%20%20%20%20BIND%28%3Fstart%20AS%20%3Fo%29%0A%20%20%7D%0A%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20%0A%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cde%2Cen%22.%20%0A%20%20%7D%0A%7D) and the query below can be executed. Although no specific query language has been defined that complies with RDF or OWL standardisation, **SPARQL** – an SQL-like language – has become established.
+Dazu soll zunächst die Seite [http://query.wikidata.org](https://query.wikidata.org/#SELECT%20DISTINCT%20%3Fs%20%3FsLabel%20%3Fp%20%3FpLabel%20%3Fo%20%3FoLabel%20WHERE%20%7B%0A%20%20VALUES%20%3Fstart%20%7B%20wd%3AQ1219561%7D%0A%0A%20%20%7B%0A%20%20%20%20%3Fstart%20%3Fp%20%3Fo%20.%0A%20%20%20%20BIND%28%3Fstart%20AS%20%3Fs%29%0A%20%20%7D%0A%20%20UNION%0A%20%20%7B%0A%20%20%20%20%3Fs%20%3Fp%20%3Fstart%20.%0A%20%20%20%20BIND%28%3Fstart%20AS%20%3Fo%29%0A%20%20%7D%0A%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20%0A%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cde%2Cen%22.%20%0A%20%20%7D%0A%7D) and the query below can be executed. Although no specific query language has been defined that complies with RDF or OWL standardisation, **SPARQL** – an SQL-like language – has become established.
 
 Our example looks like this:
 ```
@@ -78,7 +79,7 @@ SELECT DISTINCT ?s ?sLabel ?p ?pLabel ?o ?oLabel WHERE {
 
 This query returns all nodes from the Wikidata knowledge graph with a distance of 1 to node [wd:Q1219561](https://www.wikidata.org/wiki/Q1219561). It should be noted that this node describes the novel. This first ‘hop’ query alone – i.e. the query of all elements with a distance of 1 – returns 682 instances.
 
-In the query, we select all entries that interest us in the first line: subject ?s, subject name ?sLabel, predicate ?p, predicate name ?pLabel, object ?o and object name ?oLabel. We select these by allowing all predicates and objects that have either ?s ?p ?start or ?start ?p ?o as a relation to our start node, the OFD. The last line only includes labels in German and English. Now you can execute the query using the play button on the left-hand side and after a short wait you will receive a table. You can convert this into a graph by selecting it in the drop-down menu. An overview of all objects related to the Regional Finance Office should appear as illustrated here:
+In the query, we select all entries that interest us in the first line: subject ?s, subject name ?sLabel, predicate ?p, predicate name ?pLabel, object ?o and object name ?oLabel. We select these by allowing all predicates and objects that have either ?s ?p ?start or ?start ?p ?o as a relation to our start node. The last line only includes labels in German and English. Now you can execute the query using the play button on the left-hand side and after a short wait you will receive a table. You can convert this into a graph by selecting it in the drop-down menu. An overview of all objects related to the book should appear as illustrated here:
 
 <div style="text-align:center">
     <a>
@@ -90,7 +91,7 @@ The increase in predicates or another level has been omitted here, as otherwise 
 
 Have fun trying it out for yourself!
 
-## 2.2. Why graphs? - An in-depth theoretical insight
+## Why graphs? - An in-depth theoretical insight
 
 Graphs offer several advantages over lists, databases or documents. We will take a closer look at these and explain them in more detail here.
 
@@ -114,11 +115,11 @@ While conventional RAG primarily evaluates similarities and does not take conten
 
 Each data point can be tracked individually and separately. Ontologies provide clear templates, which greatly simplifies the integration of data from tables, forms or raw text. There are a number of solutions available for this purpose, ranging from simple adapters to complex entity parsers.
 
-# 3\. What does Knowledge Graphs actually enable?
+# 3. What does Knowledge Graphs actually enable?
 
 This chapter provides an overview of the possibilities offered by Knowledge Graphs, beyond the RAG example used throughout this article. The aim is to highlight the wide range of potential that arises from the creation of Knowledge Graphs. This chapter is largely based on parts of the book [Knowledge Graphs](https://kgbook.org).
 
-## 3.1. Deductive methods
+## Deductive methods
 
 In our context, deductive methods are top-down methods in which new insights are gained from explicit knowledge and data by looking at the graph as a whole. The aim is to automatically derive new facts from existing knowledge. These can either be used to expand the graph or actively employed for analysis. Typical features of deductive methods are a **reasoner**, specific **constraints** and strict **inference rules**.
 
@@ -141,7 +142,7 @@ Rule-based methods examine individual graphs and check the relationships between
 
 Main advantage: Knowledge graphs provide reliable, verifiable results that can be traced directly. At the same time, a complete data model is maintained, even if certain facts are not yet available.
 
-## 3.2. Inductive methods
+## Inductive methods
 
 The second class of methods does not require models like the deductive top-down methods, but is based directly on the data and analyses it to derive patterns. These are data-driven processes that allow us to extract patterns from individual inputs without specifying explicit rules. Here, we are once again very close to the classic field of machine learning.
 
@@ -161,7 +162,7 @@ In contrast to learning with graph embeddings, the architecture of the neural ne
 
 Symbolic learning is the only non-numerical, rule-based variant. Unlike the technologies presented so far, it is still in an early stage of development and will take time before it can be used productively. Important concepts include rules, axioms and hypothesis mining. The aim is to derive concrete rules, universally valid axioms or interesting hypotheses from semantic data. Symbolic learning is currently of particular interest as a preliminary stage to neurosymbolic learning.
 
-## 3.3. Neuro-symbolic reasoning
+##  Neuro-symbolic reasoning
 
 Object representations in knowledge graphs can be used for neuro-symbolic reasoning, combining concepts from machine learning and knowledge graphs.
 
@@ -174,16 +175,15 @@ In practice, this approach is particularly interesting for agentic or automated 
 **Advantage:**  
 → Less can go wrong because tasks are broken down into smaller steps and each intermediate step is documented.
 
-# 4\.  Knowledge graphs in practice
+# 4.  Knowledge graphs in practice
 
 This chapter deals with the practical use of knowledge graphs in companies in 2025. One aspect we have deliberately omitted is the creation, maintenance, improvement and productive querying of knowledge graphs. This is due, on the one hand, to the depth of this article and, on the other hand, to the necessary prior knowledge in the field of NLP. Anyone interested in these topics should refer to the book Knowledge Graphs, which covers them in detail. Knowledge graphs and ontologies are generally not widely promoted and are handled with little transparency. This chapter aims to convey one key insight: the most important large companies rely on knowledge graphs. These include tech giants such as  [Google, Bing, Ebay, Amazon, IBM Meta, LinkedIn](https://queue.acm.org/detail.cfm?id=3332266) but also non-digital natives such as [Axel Springer](https://jiraconfpr1.lzfd.stvbwl.net/confluence/www.palantir.com/impact/axel-springer/), [Swiss RE](https://www.palantir.com/impact/swiss-re/), [Airbus](https://www.palantir.com/impact/airbus/), [Thomson Reuters](https://www.thomsonreuters.com/en/press-releases/2025/july/thomson-reuters-launches-cocounsel-knowledge-search-an-ai-powered-experience-to-manage-content-and-institutional-knowledge), [Elsevier](https://www.elsevier.com/connect), [Roche](https://www.ontotext.com/blog/kgf22-knowledge-graphs-and-the-not-so-quiet-cognitive-revolution/), [Novartis](https://www.ontotext.com/blog/kgf22-knowledge-graphs-and-the-not-so-quiet-cognitive-revolution/), [Siemens](https://blogs.sw.siemens.com/podcasts/energy-transformation/harnessing-the-power-of-enterprise-knowledge-graphs-for-ai-and-analytics/), or EnBW. 
 
-## 4.1. Knowledge graphs as a product
+## Knowledge graphs as a product
 
 Some well-known companies offer knowledge graphs as a software product to provide easy access to this technology. It should be noted that this often results in vendor lock-in, particularly due to the initial hurdles involved in creating ontologies, integrating data and setting up pipelines for automatic improvement. It is therefore important to consider early on which technology from which provider to use and to make a well-considered make-or-buy decision. Some particularly prominent products in the field of knowledge graphs are listed below:
 
-
-Palantir Technologies with Gotham and Foundry
+**Palantir Technologies with Gotham and Foundry**
 
 Since the early 2000s, Palantir has specialised in the creation and evaluation of large ontologies and data sets in the form of knowledge graphs. The first successes of this approach have been evident since 2010, particularly in the context of espionage. These products are particularly interesting because they are already being used by German authorities and operators of critical infrastructure.
 
@@ -194,7 +194,7 @@ Since the early 2000s, Palantir has specialised in the creation and evaluation o
 
 Together with the Knowledge Graph Framework, Watson Discovery offers a product that can read documents, extract entities and relations, and convert them into knowledge graphs. Ontological templates are also already provided for individual domains.
 
-## 4.2. Enterprise knowledge managed in knowledge graphs
+## Enterprise knowledge managed in knowledge graphs
 
 **Google's Knowledge Graph**
 
@@ -212,14 +212,14 @@ Google Research operates its own knowledge graph, which complements various serv
 **Amazon Neptune**
 [Neptune](https://aws.amazon.com/de/neptune/) is both an internal and externally available product. It is a graph database service that can be controlled via SPARQL and RDF. The main use cases are in AI-RAG applications, fraud detection, security operations and customer analysis.
 
-## 4.3. Freely available graphs
+## Freely available graphs
 According to its own information, Wikidata is currently the largest freely available knowledge graph project with over [119 million objects](https://www.wikidata.org/wiki/Special:Statistics). The graph was originally developed to better display and verify Wikipedia content. With over **2 billion edits**, Wikidata demonstrates a high level of maintenance, topicality and numerous connections between entities. **DBpedia** stores over **229 million objects** and also makes them publicly available. Together, Wikidata and DBpedia form the most popular basis for freely accessible knowledge graphs. In addition to these general graphs, there are also **specialised topic blocks** that are published separately:
 - [ConceptNet](https://conceptnet.io/) focuses on fundamental concepts and implicit knowledge. This is particularly useful for **neuro-symbolic learning**, robotics, or the **explainability of LLMs**.
 - [UniProt](https://www.uniprot.org/) is a protein database that supports biologists and medical professionals in the development of drugs and research into diseases.
 - [PubChem](https://pubchem.ncbi.nlm.nih.gov/) is the largest collection of chemical information on the internet, also organised as a knowledge graph.
 - [OpenStreetMap](https://www.openstreetmap.org) contains data for **geospatial intelligence**, including buildings, addresses, property sizes and other information on a global scale, which is accessible to everyone.
 
-# 5\.  Summary & Outlook
+# 5.  Summary & Outlook
 
 In this chapter, we have ventured beyond the horizon and taken a closer look at knowledge graphs and ontologies. Knowledge graphs consist of entities and the connections between them, as they occur in the real world, and are typically stored in large databases according to the subject-predicate-object schema. Ontologies formally define the types and relations that occur in a knowledge graph. They not only enable the flexible extension and merging of individual graphs, but also structured queries and deductive and inductive analyses. In addition, we have looked at the basic technologies that make knowledge graphs accessible and found that graphs are chosen because of their atomic representation and strong interconnectivity, which offers many advantages for queries and analyses. In Chapter 3, we introduced the complex processes used to extract knowledge from knowledge graphs. Deductive methods work top-down and use model knowledge to process explicit knowledge. Inductive methods, on the other hand, are bottom-up and focus more on existing data, which means that knowledge graphs overlap with the field of traditional machine learning. We also looked at neuro-symbolic learning, which combines the advantages of machine learning and symbolic knowledge and is currently the focus of much attention. Finally, in the last chapter, we examined which companies offer knowledge graphs, how they are already being used today, and in which areas we encounter the results of these graphs on a daily basis.
 
