@@ -183,7 +183,7 @@ Below the graphic, you can see how the information is “presented” to the LLM
       <td><img src="/images/No-Tech-Articles/gated_memory.png" alt="Architecture of a Memory as a gate model" style="width:300px;"></td>
     </tr>
     <tr>
-      <td>Attetion Context</td>
+      <td>Attention Context</td>
       <td><img src="/images/No-Tech-Articles/context_attention.png" alt="Attention window for memory as a context model" style="width:300px;"></td>
       <td><img src="/images/No-Tech-Articles/gating_attention.png" alt="Attention window for memory as a gate model" style="width:300px;"></td>
     </tr>
