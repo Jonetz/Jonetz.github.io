@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "How to get Enterprise Knowledge into LLMs - An Overview"
-excerpt: "Artificial Intelligence for non Techies I" 
+excerpt: "Artificial Intelligence for non Techies I - I try to explain how we can infuse LLMs with additional knowledge that is not present during training. Additionally we look deeper at Memory Architectures, that may be relevant in the future." 
 permalink: /posts/2025/12/Enterprise-Knowledge/
 tags:
   - LLM
@@ -74,14 +74,14 @@ Neural networks consist of many layers connected in series, each of which learns
 
 <div style="text-align:center">
     <a>
-        <img src="images\No-Tech-Articles\lora.jpg" alt="[Illustration from the LORA Paper by Hu et al.](https://arxiv.org/abs/2106.09685)" style="width:70%;height:70%"> 
+        <img src="images\No-Tech-Articles\lora.png" alt="[Illustration from the LORA Paper by Hu et al.](https://arxiv.org/abs/2106.09685)" style="width:70%;height:70%"> 
     </a>
 </div>
 Another method for **parameter-efficient fine-tuning** is the use of so-called [adapter](https://jiraconfpr1.lzfd.stvbwl.net/confluence/proceedings.mlr.press/v97/houlsby19a/houlsby19a.pdf) layers (Houlsby et al.). Adapter layers are an elegant way to efficiently adapt LLMs to specific knowledge without having to retrain the entire model. The basic idea is to insert small, trainable modules between the existing layers while leaving the original weights of the model unchanged. This does not affect the general language understanding that has already been learned. Only these new adapter layers are adjusted during the training process. They are deliberately smaller than the original layers and act as flexible buffers in which new knowledge, such as domain-specific rules or internal guidelines, is encoded. The model thus learns to respond correctly to technical questions without losing its basic language skills. This method offers several advantages. It conserves resources, as significantly fewer parameters need to be trained than with classic fine-tuning, and it ensures stability because the base weights remain unchanged. At the same time, it allows for modularity: adapters can be developed specifically for certain tasks or subject areas and later replaced or expanded to reflect changes in regulations or processes. At the same time, the use of adapters requires careful planning. Their placement within the layer structure and their size significantly affect performance. Too many or incorrectly positioned adapters can reduce efficiency or even compromise the stability of the model. However, if this is taken into account, the method enables very flexible and scalable fine-tuning that specifically optimises LLMs for specific tasks without the high cost of complete retraining.
 
 <div style="text-align:center">
     <a>
-        <img src="images\No-Tech-Articles\adapter.jpg" alt="Display of an adapter layer introduced between to regular layers." style="width:70%;height:70%"> 
+        <img src="images\No-Tech-Articles\adapter.png" alt="Display of an adapter layer introduced between to regular layers." style="width:70%;height:70%"> 
     </a>
 </div>
 
@@ -105,7 +105,7 @@ In principle, RAG systems can be divided into three steps: **retrieval, augmenta
 An interesting effect of RAG is that the focus of AI use is shifting: LLMs are increasingly being used to find relevant documents independently, while the actual answer is less important. At the same time, new requirements are emerging: high-quality documents with appropriate content must be reliably identified. This is precisely what embeddings are used for. They are often also created by AI models, so that the relevance of the documents to the specific question can be automatically evaluated.
 <div style="text-align:center">
     <a>
-        <img src="images\No-Tech-Articles\rag.jpg" alt="Display of a simplistic RAG Pipeline" style="width:70%;height:70%"> 
+        <img src="images\No-Tech-Articles\rag.png" alt="Display of a simplistic RAG Pipeline" style="width:70%;height:70%"> 
     </a>
 </div>
 
@@ -178,13 +178,13 @@ Below the graphic, you can see how the information is “presented” to the LLM
   <tbody>
     <tr>
       <td>Architecture</td>
-      <td><img src="images\No-Tech-Articles\context_memory.jpg" alt="Architecture of a Memory as a context model" style="width:300px;"></td>
-      <td><img src="images\No-Tech-Articles\gated_memory.jpg" alt="Architecture of a Memory as a gate model" style="width:300px;"></td>
+      <td><img src="images\No-Tech-Articles\context_memory.png" alt="Architecture of a Memory as a context model" style="width:300px;"></td>
+      <td><img src="images\No-Tech-Articles\gated_memory.png" alt="Architecture of a Memory as a gate model" style="width:300px;"></td>
     </tr>
     <tr>
       <td>Attetion Context</td>
-      <td><img src="images\No-Tech-Articles\context_attention.jpg" alt="Attention window for memory as a context model" style="width:300px;"></td>
-      <td><img src="images\No-Tech-Articles\gating_attention.jpg" alt="Attention window for memory as a gate model" style="width:300px;"></td>
+      <td><img src="images\No-Tech-Articles\context_attention.png" alt="Attention window for memory as a context model" style="width:300px;"></td>
+      <td><img src="images\No-Tech-Articles\gating_attention.png" alt="Attention window for memory as a gate model" style="width:300px;"></td>
     </tr>
   </tbody>
 </table>
@@ -223,7 +223,7 @@ However, long context windows are more of a **quick-and-dirty solution**. Althou
 
 <div style="text-align:center">
     <a>
-        <img src="images\No-Tech-Articles\context-windows.jpg" alt="Greg Burnham and Tom Adamczewski (2025), LLMs now accept longer inputs, and the best models can use them more effectively. Published online at epoch.ai. Retrieved from: 'https://epoch.ai/data-insights/context-windows'" style="width:70%;height:70%"> 
+        <img src="images\No-Tech-Articles\context-windows.png" alt="Greg Burnham and Tom Adamczewski (2025), LLMs now accept longer inputs, and the best models can use them more effectively. Published online at epoch.ai. Retrieved from: 'https://epoch.ai/data-insights/context-windows'" style="width:70%;height:70%"> 
     </a>
 </div>
 
