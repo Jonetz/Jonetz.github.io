@@ -45,7 +45,7 @@ These standards are based on XML and define meta-models and models. They are con
 Individual huge open graphs describe the world in very concrete terms. However, the practical thing about knowledge graphs is not only that they contain a lot of knowledge, but also that ontologies can be linked together. This allows information to be summarised and expanded in the nodes of the knowledge graphs. Here, it is important to ensure a consistent graph. There are domain-specific graphs for different areas: in medicine, diseases, symptoms and medications are recorded; in biology, genomes, effects and correlations are documented; and financial institutions can also store data on companies or loans in such graphs.
 <div style="text-align:center">
     <a>
-        <img src="images\No-Tech-Articles\semantic_web_layer_cake.png" alt="A version of the layer model for the Semantic Web. OWL, RDF, RDF-S and URIs for knowledge graphs have been established from this graphic. Unfortunately, the complete standardisation of this process has not been successful." style="width:70%;height:70%"> 
+        <img src="/images/No-Tech-Articles/semantic_web_layer_cake.png" alt="A version of the layer model for the Semantic Web. OWL, RDF, RDF-S and URIs for knowledge graphs have been established from this graphic. Unfortunately, the complete standardisation of this process has not been successful." style="width:70%;height:70%"> 
     </a>
 </div>
 
@@ -83,7 +83,7 @@ In the query, we select all entries that interest us in the first line: subject 
 
 <div style="text-align:center">
     <a>
-        <img src="images\No-Tech-Articles\graph_around_the_world.png" alt="All Nodes with an edge towards or from the Around the world node." style="width:70%;height:70%"> 
+        <img src="/images/No-Tech-Articles/graph_around_the_world.png" alt="All Nodes with an edge towards or from the Around the world node." style="width:70%;height:70%"> 
     </a>
 </div>
 
@@ -202,7 +202,7 @@ Google Research operates its own knowledge graph, which complements various serv
 
 <div style="text-align:center">
     <a>
-        <img src="images\No-Tech-Articles\google_knowledge_graphs_example.png" alt="An example of information taken from the Knowledge Graph for the keyword “Angela Merkel”. Clicking on the three-dot menu provides further information on the queries used in the Knowledge Graph." style="width:70%;height:70%"> 
+        <img src="/images/No-Tech-Articles/google_knowledge_graphs_example.png" alt="An example of information taken from the Knowledge Graph for the keyword “Angela Merkel”. Clicking on the three-dot menu provides further information on the queries used in the Knowledge Graph." style="width:70%;height:70%"> 
     </a>
 </div>
 
