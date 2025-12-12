@@ -47,7 +47,7 @@ Pretraining takes place in several phases, each of which teaches different skill
 
 The alignment consists of three sub-steps:
 
-- - **Supervised fine-tuning:** Sample questions and answers are used as training data.
+- **Supervised fine-tuning:** Sample questions and answers are used as training data.
 - **Answer ranking (reinforcement loop):** The model generates multiple answers, which are sorted by quality and used for training.
 - **Reinforcement learning through feedback:** Another model or humans evaluate individual tokens and sentences, teaching the model to optimise word choice and content.
 
@@ -82,7 +82,7 @@ Another method for **parameter-efficient fine-tuning** is the use of so-called [
 
 <div style="text-align:center">
     <a>
-        <img src="/images/No-Tech-Articles/adapter.png" alt="Display of an adapter layer introduced between to regular layers." style="width:70%;height:70%"> 
+        <img src="/images/No-Tech-Articles/adapter.png" alt="Display of an adapter layer introduced between the regular layers." style="width:70%;height:70%"> 
     </a>
 </div>
 
